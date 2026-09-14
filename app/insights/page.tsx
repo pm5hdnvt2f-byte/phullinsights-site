@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { posts } from "@/lib/content";
+import { insightsPageContent, posts } from "@/content/insights";
 
-export const metadata: Metadata = {
-  title: "Insights — Phull Insights",
-  description:
-    "Field notes and short essays on regulated manufacturing, medtech distribution, and multi-site supply chains.",
-};
+export const metadata: Metadata = insightsPageContent.metadata;
 
 export default function Insights() {
   return (
@@ -14,11 +10,10 @@ export default function Insights() {
       <section className="border-b border-line bg-mist">
         <div className="mx-auto max-w-5xl px-6 py-16 md:px-8 md:py-20">
           <h1 className="text-3xl font-medium text-ink md:text-4xl">
-            Insights
+            {insightsPageContent.heading}
           </h1>
           <p className="mt-5 max-w-2xl text-[1.05rem] leading-relaxed text-slate">
-            Field notes from inside regulated manufacturing and multi-site
-            distribution — what&apos;s actually breaking, and what fixed it.
+            {insightsPageContent.introduction}
           </p>
         </div>
       </section>

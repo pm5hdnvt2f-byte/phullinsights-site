@@ -3,13 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-
-const links = [
-  { href: "/about/", label: "About" },
-  { href: "/services/", label: "Services" },
-  { href: "/insights/", label: "Insights" },
-  { href: "/contact/", label: "Contact" },
-];
+import { siteContent } from "@/content/site";
 
 function ChartMark() {
   return (
@@ -41,12 +35,12 @@ export default function Nav() {
         >
           <ChartMark />
           <span className="font-serif text-[1.05rem] font-medium tracking-tight">
-            Phull Insights
+            {siteContent.name}
           </span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
-          {links.map((link) => (
+          {siteContent.navigation.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -85,7 +79,7 @@ export default function Nav() {
 
       {open && (
         <nav className="flex flex-col gap-1 border-t border-line px-6 py-3 md:hidden">
-          {links.map((link) => (
+          {siteContent.navigation.map((link) => (
             <Link
               key={link.href}
               href={link.href}

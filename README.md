@@ -6,11 +6,11 @@ deployed to GitHub Pages at [phullinsights.com](https://phullinsights.com).
 
 ## Structure
 
+- `content/` — the editable website wording, organised into one clearly named
+  file per page. Start here for routine updates.
 - `app/` — pages: home (`page.tsx`), `about/`, `services/`, `insights/`
   (list + `[slug]` for individual posts), `contact/`
 - `components/` — `Nav`, `Footer`, `RouteMark` (the hero graphic)
-- `lib/content.ts` — all editable copy: the four service lines, the
-  methodology steps, and the insights posts. Start here to change text.
 - `public/CNAME` — the custom domain for GitHub Pages
 - `.github/workflows/deploy.yml` — builds and deploys automatically on
   every push to `main`
@@ -26,17 +26,12 @@ Visit http://localhost:3000.
 
 ## Editing content
 
-Most of the site's copy lives in `lib/content.ts`:
+All routine wording and business-detail changes live in the `content/` folder.
+The page code and styling are separate, so updating copy does not require
+working with the site's layout.
 
-- `services` — the four lines shown on the home page and `/services`
-- `methodology` — the four-stage diagnostic (Map, Measure, Diagnose, Rebuild)
-- `posts` — the Insights articles. The three included now are placeholders
-  (marked as drafts) — replace `body` with the real article text and update
-  `date`/`title`/`excerpt` for each. To add a new post, add a new object to
-  the `posts` array with a unique `slug`; a page is generated automatically.
-
-Page-specific copy (the About bio, the Contact page) lives directly in each
-`app/**/page.tsx` file.
+See **[Editing the website without AI](EDITING.md)** for a page-by-page file
+guide, exact GitHub editing steps, and an example of adding an Insights article.
 
 ## Deploying
 

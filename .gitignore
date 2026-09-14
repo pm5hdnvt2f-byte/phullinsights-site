@@ -1,0 +1,10 @@
+# Local dependencies and generated build output
+node_modules/
+.next/
+out/
+
+# Local environment and operating-system files
+.env*
+!.env.example
+.DS_Store
+npm-debug.log*
