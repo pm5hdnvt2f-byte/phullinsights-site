@@ -1,63 +1,25 @@
-export const services = [
-  {
-    slug: "advisory",
-    name: "Advisory",
-    summary:
-      "Operating model design, network and branch strategy, and turnaround leadership for supply chains carrying tens to hundreds of millions in throughput.",
-  },
-  {
-    slug: "technology",
-    name: "Technology",
-    summary:
-      "Tools that reconstruct what actually happened in a supply chain — ingesting the emails, ERP exports, and PDFs nobody has time to read, and turning them into a journey you can see.",
-  },
-  {
-    slug: "methodology",
-    name: "Methodology",
-    summary:
-      "A four-stage diagnostic, drawn from Six Sigma and PRINCE2 discipline, that finds root cause before it prescribes a fix.",
-  },
-  {
-    slug: "insights",
-    name: "Insights",
-    summary:
-      "Field notes from inside regulated manufacturing and multi-site distribution — what's actually breaking, and what fixed it.",
-  },
-];
-
-export const methodology = [
-  {
-    step: "01",
-    name: "Map",
-    description:
-      "Trace the physical and information flow as it actually runs — not as the org chart or the process manual says it does.",
-  },
-  {
-    step: "02",
-    name: "Measure",
-    description:
-      "Quantify the friction: dwell time, exception rate, cost to serve, and the points where service actually fails.",
-  },
-  {
-    step: "03",
-    name: "Diagnose",
-    description:
-      "Isolate root cause using structured root-cause analysis, not the loudest anecdote in the room.",
-  },
-  {
-    step: "04",
-    name: "Rebuild",
-    description:
-      "Redesign the operating model — and the technology behind it, where that's the real constraint — then hand over a plan the team can run without you.",
-  },
-];
-
+// EDIT HERE: Insights page wording and every article. Keep newest articles first.
 export type Post = {
+  // Used in the page address. Use lowercase words separated by hyphens.
   slug: string;
   title: string;
+  // Use YYYY-MM-DD so dates sort and display correctly.
   date: string;
   excerpt: string;
+  // Each array item becomes a separate paragraph.
   body: string[];
+};
+
+export const insightsPageContent = {
+  metadata: {
+    title: "Insights — Phull Insights",
+    description:
+      "Field notes and short essays on regulated manufacturing, medtech distribution, and multi-site supply chains.",
+  },
+  heading: "Insights",
+  introduction:
+    "Field notes from inside regulated manufacturing and multi-site distribution — what's actually breaking, and what fixed it.",
+  backLinkLabel: "← All insights",
 };
 
 export const posts: Post[] = [

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { posts } from "@/lib/content";
+import { insightsPageContent, posts } from "@/content/insights";
+import { siteContent } from "@/content/site";
 
 type Params = Promise<{ slug: string }>;
 
@@ -18,7 +19,7 @@ export async function generateMetadata({
   const post = posts.find((p) => p.slug === slug);
   if (!post) return {};
   return {
-    title: `${post.title} — Phull Insights`,
+    title: `${post.title} — ${siteContent.name}`,
     description: post.excerpt,
   };
 }
@@ -35,7 +36,7 @@ export default async function Post({ params }: { params: Params }) {
           href="/insights/"
           className="focus-ring text-[0.9rem] text-slate hover:text-brass"
         >
-          ← All insights
+          {insightsPageContent.backLinkLabel}
         </Link>
         <p className="mt-6 text-[0.85rem] text-slate">
           {new Date(post.date).toLocaleDateString("en-GB", {
