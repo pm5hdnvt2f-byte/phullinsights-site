@@ -38,15 +38,13 @@ export default function Contact() {
                 </dd>
               </div>
               <div>
-                <dt className="text-slate">More about the founder</dt>
+                <dt className="text-slate">About the founder</dt>
                 <dd className="mt-1">
                   <a
-                    href="https://pupsiphull.com"
-                    target="_blank"
-                    rel="noreferrer"
+                    href="/about/"
                     className="focus-ring text-ink hover:text-brass"
                   >
-                    pupsiphull.com
+                    Pupsi Phull
                   </a>
                 </dd>
               </div>
