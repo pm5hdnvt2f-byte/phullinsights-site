@@ -37,22 +37,47 @@ export default async function Post({ params }: { params: Params }) {
         >
           ← All insights
         </Link>
-        <p className="mt-6 text-[0.85rem] text-slate">
-          {new Date(post.date).toLocaleDateString("en-GB", {
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-          })}
+        <p className="mt-6 text-[0.82rem] uppercase tracking-[0.08em] text-brass">
+          Preview · {post.kind}
         </p>
         <h1 className="mt-3 text-3xl font-medium text-ink md:text-4xl">
           {post.title}
         </h1>
-        <div className="mt-8 space-y-5 border-t border-line pt-8 text-[1.05rem] leading-relaxed text-slate">
-          {post.body.map((paragraph, i) => (
-            <p key={i} className={i === 0 ? "italic text-slate/80" : undefined}>
-              {paragraph}
-            </p>
+        <p className="mt-4 text-[0.88rem] text-slate">{post.readingTime}</p>
+        <p className="mt-8 border-y border-line py-5 text-[0.92rem] italic leading-relaxed text-slate/85">
+          {post.disclosure}
+        </p>
+        <div className="mt-10 space-y-10 text-[1.03rem] leading-relaxed text-slate">
+          {post.sections.map((section) => (
+            <section key={section.heading}>
+              <h2 className="font-serif text-2xl text-ink">
+                {section.heading}
+              </h2>
+              <div className="mt-4 space-y-5">
+                {section.paragraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+              {section.bullets && (
+                <ul className="mt-5 space-y-3 border-l-2 border-brass pl-5 text-[0.96rem]">
+                  {section.bullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
+              )}
+            </section>
           ))}
+        </div>
+        <div className="mt-14 border-t border-line pt-8">
+          <p className="font-serif text-xl text-ink">
+            Have a journey that needs testing against the evidence?
+          </p>
+          <Link
+            href="/contact/"
+            className="focus-ring mt-4 inline-block border-b border-ink/40 pb-0.5 text-[0.95rem] text-ink hover:border-brass hover:text-brass"
+          >
+            Start a conversation
+          </Link>
         </div>
       </div>
     </article>

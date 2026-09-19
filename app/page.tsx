@@ -26,14 +26,51 @@ export default function Home() {
                 Start a conversation
               </Link>
               <Link
-                href="/#methodology"
+                href="/journeyiq/"
                 className="focus-ring border-b border-mist/40 pb-0.5 text-[0.95rem] text-mist/85 hover:border-brass hover:text-brass"
               >
-                See how the diagnostic works
+                Explore JourneyIQ
               </Link>
             </div>
           </div>
           <RouteMark />
+        </div>
+      </section>
+
+      {/* JourneyIQ proposition */}
+      <section className="border-b border-line bg-paper">
+        <div className="mx-auto grid max-w-5xl gap-10 px-6 py-16 md:grid-cols-[0.85fr_1.15fr] md:items-start md:px-8">
+          <div>
+            <p className="text-sm font-medium uppercase tracking-[0.14em] text-brass">
+              JourneyIQ
+            </p>
+            <h2 className="mt-3 text-2xl font-medium text-ink md:text-3xl">
+              Diagnose the journey before prescribing the system.
+            </h2>
+          </div>
+          <div>
+            <p className="max-w-2xl text-[1rem] leading-relaxed text-slate">
+              A service-led supply-chain diagnostic for regulated
+              manufacturers, MedTech businesses, and complex networks.
+              JourneyIQ connects operational events across ERP exports,
+              spreadsheets, supplier communications, and internal handoffs,
+              then turns the evidence into a prioritised management roadmap.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-6">
+              <Link
+                href="/journeyiq/"
+                className="focus-ring border-b border-ink/40 pb-0.5 text-[0.95rem] text-ink hover:border-brass hover:text-brass"
+              >
+                See the proposition
+              </Link>
+              <Link
+                href="/trust/"
+                className="focus-ring border-b border-ink/25 pb-0.5 text-[0.95rem] text-slate hover:border-brass hover:text-brass"
+              >
+                Trust and data principles
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -116,6 +153,12 @@ export default function Home() {
               </div>
             ))}
           </div>
+          <Link
+            href="/methodology/"
+            className="focus-ring mt-9 inline-block border-b border-mist/40 pb-0.5 text-[0.9rem] text-mist/80 hover:border-brass hover:text-brass"
+          >
+            Explore the methodology and evidence ladder
+          </Link>
         </div>
       </section>
 
@@ -140,7 +183,10 @@ export default function Home() {
                 href={`/insights/${p.slug}/`}
                 className="focus-ring group block py-6"
               >
-                <p className="font-serif text-lg text-ink group-hover:text-brass">
+                <p className="text-[0.78rem] uppercase tracking-[0.08em] text-brass">
+                  Preview · {p.kind}
+                </p>
+                <p className="mt-2 font-serif text-lg text-ink group-hover:text-brass">
                   {p.title}
                 </p>
                 <p className="mt-2 max-w-2xl text-[0.92rem] leading-relaxed text-slate">

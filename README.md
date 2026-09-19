@@ -6,13 +6,13 @@ deployed to GitHub Pages at [phullinsights.com](https://phullinsights.com).
 
 ## Structure
 
-- `app/` — pages: home (`page.tsx`), `about/`, `services/`, `insights/`
-  (list + `[slug]` for individual posts), `contact/`
+- `app/` — pages: home, about, services, JourneyIQ, methodology, trust,
+  insights (list + individual posts), and contact
 - `components/` — `Nav`, `Footer`, `RouteMark` (the hero graphic)
-- `lib/content.ts` — all editable copy: the four service lines, the
-  methodology steps, and the insights posts. Start here to change text.
+- `lib/content.ts` — shared editable copy for services, methodology,
+  diagnostic outputs, trust principles, and insights posts
 - `public/CNAME` — the custom domain for GitHub Pages
-- `.github/workflows/deploy.yml` — builds and deploys automatically on
+- `.github/workflows/deploy-pages.yml` — builds and deploys automatically on
   every push to `main`
 
 ## Local development
@@ -30,10 +30,11 @@ Most of the site's copy lives in `lib/content.ts`:
 
 - `services` — the four lines shown on the home page and `/services`
 - `methodology` — the four-stage diagnostic (Map, Measure, Diagnose, Rebuild)
-- `posts` — the Insights articles. The three included now are placeholders
-  (marked as drafts) — replace `body` with the real article text and update
-  `date`/`title`/`excerpt` for each. To add a new post, add a new object to
-  the `posts` array with a unique `slug`; a page is generated automatically.
+- `diagnosticOutputs`, `evidenceLevels`, and `trustPrinciples` — shared
+  JourneyIQ, methodology, and trust copy
+- `posts` — the five long-form Insights articles. Add a new object with a
+  unique `slug`; a page is generated automatically. Keep the `kind` and
+  `disclosure` fields accurate so scenarios cannot be mistaken for client work.
 
 Page-specific copy (the About bio, the Contact page) lives directly in each
 `app/**/page.tsx` file.
@@ -41,7 +42,7 @@ Page-specific copy (the About bio, the Contact page) lives directly in each
 ## Deploying
 
 This repo deploys itself. On every push to `main`, the GitHub Actions
-workflow in `.github/workflows/deploy.yml` builds the site and publishes the
+workflow in `.github/workflows/deploy-pages.yml` builds the site and publishes the
 `out/` folder to GitHub Pages.
 
 **One-time setup**, before the first deploy will work:
@@ -77,3 +78,13 @@ a deploy or see why one failed.
   form submissions server-side. If you want an actual contact form, the
   simplest options are a third-party form endpoint (e.g. Formspree) or
   moving hosting to a platform with serverless functions.
+
+## JourneyIQ demo branch
+
+The JourneyIQ expansion is prepared on the preview/journeyiq-expansion branch.
+The GitHub Pages workflow deploys only from main, so this branch remains a
+review-only demo unless it is explicitly merged later.
+
+Shared proposition, methodology, trust, and article content is kept in
+lib/content.ts. Illustrative insights include a visible disclosure and must not
+be presented as real client work or verified customer outcomes.

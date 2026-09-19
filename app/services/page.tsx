@@ -5,8 +5,45 @@ import { methodology } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Services — Phull Insights",
   description:
-    "Advisory, technology, methodology, and insights: four ways Phull Insights works with supply chains under pressure to perform.",
+    "Supply-chain diagnostics, operations advisory, focused monitoring, and team capability for regulated and complex operating networks.",
 };
+
+const offers = [
+  {
+    name: "JourneyIQ diagnostic",
+    for: "Leaders who can see the symptoms but do not yet have a trusted end-to-end account of the cause.",
+    work:
+      "Define the management question, reconstruct the relevant journey from available operational evidence, quantify the material friction, and prioritise the first interventions.",
+    outcome:
+      "An executive view, evidence trail, opportunity register, and sequenced action roadmap.",
+    href: "/journeyiq/",
+    link: "Explore JourneyIQ",
+  },
+  {
+    name: "Operating model and network advisory",
+    for: "Distribution, manufacturing, and branch networks under service, margin, capacity, or accountability pressure.",
+    work:
+      "Test how work, decisions, measures, and ownership move across the network; redesign the model where the evidence supports change.",
+    outcome:
+      "A practical target model, transition priorities, governance, and leadership support through the first phase of change.",
+  },
+  {
+    name: "Diagnostic monitoring",
+    for: "Teams that have completed a diagnostic and need a focused view of whether interventions are holding.",
+    work:
+      "Refresh agreed data, review priority exceptions, track the movement in opportunity and risk, and focus management attention on material changes.",
+    outcome:
+      "A repeatable review rhythm without turning the proposition into a broad dashboard programme.",
+  },
+  {
+    name: "Team capability and handover",
+    for: "Internal teams that want to own the method rather than depend on a permanent external layer.",
+    work:
+      "Build practical routines for journey mapping, evidence quality, root-cause review, opportunity framing, and decision follow-through.",
+    outcome:
+      "Definitions, templates, review routines, and a handover the team can operate after the engagement.",
+  },
+];
 
 export default function Services() {
   return (
@@ -15,118 +52,112 @@ export default function Services() {
         <div className="mx-auto max-w-5xl px-6 py-16 md:px-8 md:py-20">
           <h1 className="text-3xl font-medium md:text-4xl">Services</h1>
           <p className="mt-5 max-w-2xl text-[1.05rem] leading-relaxed text-mist/75">
-            Four ways in, depending on whether the problem is the operating
-            model, the visibility into it, the discipline behind the review,
-            or simply deciding whether this way of working fits.
+            Start with the evidence gap, not a predetermined solution. The
+            work can stop at a focused diagnosis, continue into operating
+            model change, or establish a monitoring and handover rhythm where
+            the need is genuinely recurring.
           </p>
         </div>
       </section>
 
-      {/* Advisory */}
-      <section className="border-b border-line bg-mist">
-        <div className="mx-auto max-w-5xl px-6 py-14 md:px-8">
-          <div className="grid gap-6 md:grid-cols-[220px_1fr] md:gap-12">
-            <h2 className="font-serif text-2xl text-ink">Advisory</h2>
-            <div className="max-w-2xl space-y-4 text-[1rem] leading-relaxed text-slate">
-              <p>
-                Operating model design, network and branch strategy, and
-                turnaround leadership for supply chains carrying tens to
-                hundreds of millions in throughput.
-              </p>
-              <p>
-                <span className="text-ink">Who it&apos;s for: </span>
-                businesses running a distribution or branch network under
-                margin or service pressure, where the current structure was
-                inherited rather than designed.
-              </p>
-              <p>
-                <span className="text-ink">What you get: </span>
-                a diagnosed root cause, a redesigned operating model, and
-                hands-on leadership through the first phase of change where
-                that&apos;s useful.
-              </p>
-            </div>
+      <section className="bg-mist">
+        <div className="mx-auto max-w-5xl px-6 py-8 md:px-8">
+          <div className="divide-y divide-line border-y border-line">
+            {offers.map((offer, index) => (
+              <article
+                key={offer.name}
+                className="grid gap-7 py-10 md:grid-cols-[90px_210px_1fr] md:gap-8"
+              >
+                <p className="font-serif text-xl text-brass">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <h2 className="font-serif text-2xl text-ink">{offer.name}</h2>
+                <div className="space-y-4 text-[0.96rem] leading-relaxed text-slate">
+                  <p>
+                    <span className="font-medium text-ink">For: </span>
+                    {offer.for}
+                  </p>
+                  <p>
+                    <span className="font-medium text-ink">The work: </span>
+                    {offer.work}
+                  </p>
+                  <p>
+                    <span className="font-medium text-ink">Designed output: </span>
+                    {offer.outcome}
+                  </p>
+                  {offer.href && (
+                    <Link
+                      href={offer.href}
+                      className="focus-ring inline-block border-b border-ink/30 pb-0.5 text-ink hover:border-brass hover:text-brass"
+                    >
+                      {offer.link}
+                    </Link>
+                  )}
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Technology */}
-      <section className="border-b border-line bg-mist">
-        <div className="mx-auto max-w-5xl px-6 py-14 md:px-8">
-          <div className="grid gap-6 md:grid-cols-[220px_1fr] md:gap-12">
-            <h2 className="font-serif text-2xl text-ink">Technology</h2>
-            <div className="max-w-2xl space-y-4 text-[1rem] leading-relaxed text-slate">
-              <p>
-                Tools that ingest the unstructured data a supply chain
-                already produces — emails, ERP exports, delivery notes, scanned
-                PDFs — and reconstruct the actual journey an order or shipment
-                took.
+      <section className="bg-ink text-mist">
+        <div className="mx-auto max-w-5xl px-6 py-16 md:px-8">
+          <div className="grid gap-8 md:grid-cols-[0.7fr_1.3fr] md:gap-14">
+            <div>
+              <p className="text-sm font-medium uppercase tracking-[0.14em] text-brass">
+                Shared method
               </p>
-              <p>
-                <span className="text-ink">Who it&apos;s for: </span>
-                teams who suspect their reporting doesn&apos;t reflect
-                reality, but don&apos;t have the hours to trace it by hand.
-              </p>
-              <p>
-                <span className="text-ink">What you get: </span>
-                a working visibility tool built around your own data, not a
-                slide deck describing what one could look like.
-              </p>
+              <h2 className="mt-3 text-2xl font-medium md:text-3xl">
+                Every route uses the same diagnostic discipline
+              </h2>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Methodology */}
-      <section id="methodology" className="border-b border-line bg-ink text-mist">
-        <div className="mx-auto max-w-5xl px-6 py-14 md:px-8">
-          <div className="grid gap-6 md:grid-cols-[220px_1fr] md:gap-12">
-            <h2 className="font-serif text-2xl">Methodology</h2>
-            <div className="max-w-2xl">
-              <p className="text-[1rem] leading-relaxed text-mist/75">
-                A four-stage diagnostic, drawn from Six Sigma and PRINCE2
-                discipline, that finds root cause before it prescribes a fix.
-                Every engagement runs through all four stages, in order.
-              </p>
-              <div className="mt-8 space-y-6 border-t border-mist/15 pt-8">
-                {methodology.map((m) => (
-                  <div key={m.step} className="flex gap-5">
-                    <p className="font-serif text-lg text-brass">{m.step}</p>
-                    <div>
-                      <p className="font-serif text-lg">{m.name}</p>
-                      <p className="mt-1 text-[0.95rem] leading-relaxed text-mist/70">
-                        {m.description}
-                      </p>
-                    </div>
+            <div>
+              <div className="grid gap-6 sm:grid-cols-2">
+                {methodology.map((stage) => (
+                  <div key={stage.step} className="border-t border-mist/15 pt-5">
+                    <p className="font-serif text-brass">{stage.step}</p>
+                    <h3 className="mt-2 font-serif text-lg">{stage.name}</h3>
+                    <p className="mt-2 text-[0.9rem] leading-relaxed text-mist/65">
+                      {stage.description}
+                    </p>
                   </div>
                 ))}
               </div>
+              <Link
+                href="/methodology/"
+                className="focus-ring mt-8 inline-block border-b border-mist/40 pb-0.5 text-[0.9rem] text-mist/80 hover:border-brass hover:text-brass"
+              >
+                Read the full methodology
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Insights */}
-      <section className="bg-mist">
-        <div className="mx-auto max-w-5xl px-6 py-14 md:px-8">
-          <div className="grid gap-6 md:grid-cols-[220px_1fr] md:gap-12">
-            <h2 className="font-serif text-2xl text-ink">Insights</h2>
-            <div className="max-w-2xl space-y-4 text-[1rem] leading-relaxed text-slate">
-              <p>
-                Field notes and short essays drawn from live engagements —
-                what&apos;s actually breaking in regulated manufacturing and
-                multi-site distribution, and what fixed it.
-              </p>
-              <p>
-                <span className="text-ink">Who it&apos;s for: </span>
-                anyone deciding whether this way of working fits their
-                problem, before the first conversation.
-              </p>
+      <section className="border-b border-line bg-paper">
+        <div className="mx-auto grid max-w-5xl gap-8 px-6 py-14 md:grid-cols-[0.8fr_1.2fr] md:px-8">
+          <h2 className="font-serif text-2xl text-ink">
+            A narrower first conversation
+          </h2>
+          <div className="text-[0.98rem] leading-relaxed text-slate">
+            <p>
+              The first conversation should establish the operating symptom,
+              the decision that is currently difficult, the likely evidence
+              boundary, and whether a diagnostic could change the next action.
+              No data transfer is needed for that conversation.
+            </p>
+            <div className="mt-5 flex flex-wrap gap-6">
               <Link
-                href="/insights/"
-                className="focus-ring inline-block border-b border-ink/30 pb-0.5 text-ink hover:border-brass hover:text-brass"
+                href="/contact/"
+                className="focus-ring border-b border-ink/40 pb-0.5 text-ink hover:border-brass hover:text-brass"
               >
-                Read the latest insights
+                Start a conversation
+              </Link>
+              <Link
+                href="/trust/"
+                className="focus-ring border-b border-ink/25 pb-0.5 text-slate hover:border-brass hover:text-brass"
+              >
+                Trust and data principles
               </Link>
             </div>
           </div>

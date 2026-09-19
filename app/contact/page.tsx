@@ -67,8 +67,15 @@ export default function Contact() {
             <ul className="mt-4 max-w-md space-y-3 border-t border-line pt-4 text-[0.95rem] leading-relaxed text-slate">
               <li>What the network or operation looks like today — size, sites, and volume.</li>
               <li>The specific symptom prompting the conversation — cost, service, or compliance.</li>
-              <li>Whether you&apos;re looking for advisory input, a technology build, or both.</li>
+              <li>The management decision that is currently difficult to make with confidence.</li>
+              <li>Whether you&apos;re exploring a JourneyIQ diagnostic, wider advisory support, or both.</li>
             </ul>
+            <p className="mt-5 max-w-md text-[0.88rem] leading-relaxed text-slate/80">
+              Please do not send operational files, personal data, patient
+              data, or confidential records in the first email. Data scope
+              and transfer controls would be agreed separately if the
+              conversation progresses.
+            </p>
           </div>
         </div>
       </section>

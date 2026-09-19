@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="bg-ink text-mist">
       <div className="mx-auto max-w-5xl px-6 py-14 md:px-8">
-        <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr]">
+        <div className="grid gap-10 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
           <div>
             <p className="font-serif text-lg font-medium">Phull Insights</p>
             <p className="mt-3 max-w-xs text-[0.95rem] leading-relaxed text-mist/70">
@@ -27,8 +27,29 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/journeyiq/" className="focus-ring text-mist/85 hover:text-brass">
+                  JourneyIQ
+                </Link>
+              </li>
+              <li>
                 <Link href="/insights/" className="focus-ring text-mist/85 hover:text-brass">
                   Insights
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <p className="text-sm font-medium text-mist/50">Approach</p>
+            <ul className="mt-3 space-y-2 text-[0.95rem]">
+              <li>
+                <Link href="/methodology/" className="focus-ring text-mist/85 hover:text-brass">
+                  Methodology
+                </Link>
+              </li>
+              <li>
+                <Link href="/trust/" className="focus-ring text-mist/85 hover:text-brass">
+                  Trust and data
                 </Link>
               </li>
             </ul>

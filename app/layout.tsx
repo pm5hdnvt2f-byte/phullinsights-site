@@ -21,12 +21,12 @@ const plexSans = IBM_Plex_Sans({
 export const metadata: Metadata = {
   title: "Phull Insights — Operations advisory and technology practice",
   description:
-    "Phull Insights is an operations advisory and technology practice for supply chains that can't afford to guess: regulated manufacturing, medtech distribution, and multi-site networks under pressure to perform.",
+    "Phull Insights provides operations advisory and the JourneyIQ supply-chain diagnostic for regulated manufacturing, MedTech, and complex networks.",
   metadataBase: new URL("https://phullinsights.com"),
   openGraph: {
     title: "Phull Insights",
     description:
-      "Operations advisory and technology for supply chains that can't afford to guess.",
+      "Operations advisory and the JourneyIQ diagnostic for supply chains that can't afford to guess.",
     url: "https://phullinsights.com",
     siteName: "Phull Insights",
     type: "website",

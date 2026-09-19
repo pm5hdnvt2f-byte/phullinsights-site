@@ -7,6 +7,7 @@ import { useState } from "react";
 const links = [
   { href: "/about/", label: "About" },
   { href: "/services/", label: "Services" },
+  { href: "/journeyiq/", label: "JourneyIQ" },
   { href: "/insights/", label: "Insights" },
   { href: "/contact/", label: "Contact" },
 ];
@@ -45,7 +46,7 @@ export default function Nav() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-6 md:flex lg:gap-8">
           {links.map((link) => (
             <Link
               key={link.href}

@@ -5,7 +5,7 @@ import { posts } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Insights — Phull Insights",
   description:
-    "Field notes and short essays on regulated manufacturing, medtech distribution, and multi-site supply chains.",
+    "Illustrative scenario analyses and practice notes on regulated manufacturing, MedTech, and complex supply chains.",
 };
 
 export default function Insights() {
@@ -17,8 +17,13 @@ export default function Insights() {
             Insights
           </h1>
           <p className="mt-5 max-w-2xl text-[1.05rem] leading-relaxed text-slate">
-            Field notes from inside regulated manufacturing and multi-site
-            distribution — what&apos;s actually breaking, and what fixed it.
+            Scenario analyses and practice notes on the journeys behind
+            service, inventory, supplier performance, and operational
+            decision-making.
+          </p>
+          <p className="mt-4 max-w-2xl text-[0.9rem] leading-relaxed text-slate/80">
+            Illustrative articles are clearly labelled. They do not represent
+            named clients, verified customer outcomes, or testimonials.
           </p>
         </div>
       </section>
@@ -32,18 +37,17 @@ export default function Insights() {
                 href={`/insights/${p.slug}/`}
                 className="focus-ring group block py-8"
               >
-                <p className="text-[0.85rem] text-slate">
-                  {new Date(p.date).toLocaleDateString("en-GB", {
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
-                  })}
+                <p className="text-[0.82rem] uppercase tracking-[0.08em] text-brass">
+                  Preview · {p.kind}
                 </p>
                 <p className="mt-2 font-serif text-xl text-ink group-hover:text-brass">
                   {p.title}
                 </p>
                 <p className="mt-2 max-w-2xl text-[0.98rem] leading-relaxed text-slate">
                   {p.excerpt}
+                </p>
+                <p className="mt-3 text-[0.82rem] text-slate/75">
+                  {p.readingTime}
                 </p>
               </Link>
             ))}
