@@ -1,0 +1,69 @@
+const fs = require('fs');
+const path = require('path');
+
+const dist = path.resolve(__dirname, '../dist');
+const base = 'https://phullinsights.com';
+const routes = JSON.parse(fs.readFileSync(path.join(dist, 'routes.json'), 'utf8'));
+const errors = [];
+const titles = new Map();
+const descriptions = new Map();
+
+function htmlPath(route) {
+  return route === '/' ? path.join(dist, 'index.html') : path.join(dist, route.replace(/^\//, ''), 'index.html');
+}
+
+for (const route of routes) {
+  const file = htmlPath(route);
+  if (!fs.existsSync(file)) { errors.push(`${route}: missing index.html`); continue; }
+  const html = fs.readFileSync(file, 'utf8');
+  const title = html.match(/<title>([^<]+)<\/title>/)?.[1];
+  const description = html.match(/<meta name="description" content="([^"]+)">/)?.[1];
+  const canonical = html.match(/<link rel="canonical" href="([^"]+)">/)?.[1];
+  const robots = html.match(/<meta name="robots" content="([^"]+)">/)?.[1];
+  const h1Count = (html.match(/<h1(?:\s|>)/g) || []).length;
+  if (!title) errors.push(`${route}: missing title`);
+  if (!description) errors.push(`${route}: missing description`);
+  if (canonical !== `${base}${route}`) errors.push(`${route}: canonical mismatch`);
+  if (!robots || !robots.includes('index') || robots.includes('noindex')) errors.push(`${route}: production index directive missing`);
+  if (h1Count !== 1) errors.push(`${route}: expected one H1, found ${h1Count}`);
+  if (!html.includes(`property="og:url" content="${base}${route}"`)) errors.push(`${route}: Open Graph URL mismatch`);
+  if (!html.includes('property="og:image"')) errors.push(`${route}: Open Graph image missing`);
+  if (/TEST PREVIEW|not published to production|Preview form only|non-production outline/i.test(html)) errors.push(`${route}: preview-only wording found`);
+  if (title) { if (titles.has(title)) errors.push(`${route}: duplicate title`); else titles.set(title, route); }
+  if (description) { if (descriptions.has(description)) errors.push(`${route}: duplicate description`); else descriptions.set(description, route); }
+  for (const block of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    try { JSON.parse(block[1]); } catch (error) { errors.push(`${route}: invalid JSON-LD`); }
+  }
+  for (const match of html.matchAll(/href="([^"]+)"/g)) {
+    const href = match[1];
+    if (!href.startsWith('/') || href.startsWith('//')) continue;
+    const target = href.split('#')[0].split('?')[0];
+    if (!target) continue;
+    const targetFile = target.endsWith('/') ? htmlPath(target) : path.join(dist, target.replace(/^\//, ''));
+    if (!fs.existsSync(targetFile)) errors.push(`${route}: broken internal link ${href}`);
+  }
+}
+
+const allHtml = routes.map((route) => fs.readFileSync(htmlPath(route), 'utf8')).join('\n');
+if (/PGCert in Sustainability|Sustainability \(in progress\)/i.test(allHtml)) errors.push('Outdated qualification wording found');
+if (/£330m|GBP 330 million/i.test(allHtml)) errors.push('Combined scope figure found');
+if (!allHtml.includes('Postgraduate Certificate in Sustainability, Cranfield University, 2026')) errors.push('Exact qualification wording missing');
+if (!allHtml.includes('£230m revenue scope') || !allHtml.includes('£100m P&amp;L accountability')) errors.push('Separate scope proof points missing');
+if (allHtml.includes('id="preview-contact-form"')) errors.push('Disabled preview form found in production');
+if (!allHtml.includes('mailto:hello@phullinsights.com?subject=Client%20operational%20diagnostic%20enquiry')) errors.push('Client email route missing');
+if (!allHtml.includes('mailto:hello@phullinsights.com?subject=Executive%20mandate%20discussion')) errors.push('Recruiter email route missing');
+if (!allHtml.includes('mailto:hello@phullinsights.com?subject=Peer%20or%20speaking%20enquiry')) errors.push('Peer email route missing');
+
+const robots = fs.readFileSync(path.join(dist, 'robots.txt'), 'utf8');
+if (!robots.includes('Allow: /') || robots.includes('Disallow: /')) errors.push('Production robots policy is incorrect');
+if (!fs.existsSync(path.join(dist, 'sitemap.xml'))) errors.push('Production sitemap missing');
+if (fs.readFileSync(path.join(dist, 'CNAME'), 'utf8').trim() !== 'phullinsights.com') errors.push('CNAME missing or incorrect');
+if (fs.existsSync(path.join(dist, 'contact', 'thank-you', 'index.html'))) errors.push('Inactive thank-you route should not ship');
+
+if (errors.length) {
+  console.error(`Production validation failed with ${errors.length} error(s):`);
+  errors.forEach((error) => console.error(`- ${error}`));
+  process.exit(1);
+}
+
+console.log(`Validated production build: ${routes.length} canonical routes, links, metadata, indexability, contact routes, sitemap and CNAME all pass.`);
