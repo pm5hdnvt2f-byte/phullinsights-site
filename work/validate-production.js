@@ -47,8 +47,12 @@ for (const route of routes) {
 const allHtml = routes.map((route) => fs.readFileSync(htmlPath(route), 'utf8')).join('\n');
 if (/PGCert in Sustainability|Sustainability \(in progress\)/i.test(allHtml)) errors.push('Outdated qualification wording found');
 if (/£330m|GBP 330 million/i.test(allHtml)) errors.push('Combined scope figure found');
+if (/Owner-approved wording: retain the Punjabi meaning and transliteration/i.test(allHtml)) errors.push('Internal editorial wording found in public output');
 if (!allHtml.includes('Postgraduate Certificate in Sustainability, Cranfield University, 2026')) errors.push('Exact qualification wording missing');
 if (!allHtml.includes('£230m revenue scope') || !allHtml.includes('£100m P&amp;L accountability')) errors.push('Separate scope proof points missing');
+if (routes.includes('/executive-leadership/')) errors.push('Legacy executive-leadership route must not remain canonical');
+const executiveRedirect = fs.readFileSync(path.join(dist, 'executive-leadership', 'index.html'), 'utf8');
+if (!executiveRedirect.includes('href="https://phullinsights.com/recruiter/"') || !executiveRedirect.includes('url=/recruiter/')) errors.push('Legacy executive-leadership redirect is incorrect');
 if (allHtml.includes('id="preview-contact-form"')) errors.push('Disabled preview form found in production');
 if (!allHtml.includes('mailto:hello@phullinsights.com?subject=Client%20operational%20diagnostic%20enquiry')) errors.push('Client email route missing');
 if (!allHtml.includes('mailto:hello@phullinsights.com?subject=Executive%20mandate%20discussion')) errors.push('Recruiter email route missing');

@@ -1,5 +1,8 @@
 [
   "/",
+  "/client/",
+  "/recruiter/",
+  "/peer/",
   "/services/",
   "/services/supply-chain-consultancy/",
   "/services/operations-transformation/",
@@ -7,7 +10,6 @@
   "/services/operational-excellence/",
   "/methodology/",
   "/about/",
-  "/executive-leadership/",
   "/insights/",
   "/insights/delivery-confirmed-otif/",
   "/insights/inventory-service-protected/",

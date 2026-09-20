@@ -4,6 +4,7 @@ Owner approval recorded 20 September 2026. These permanent redirects are approve
 
 | Existing route | Recommended destination |
 |---|---|
+| `/executive-leadership/` | `/recruiter/` |
 | `/track-record/` | `/insights/` |
 | `/track-record/otif-branch-network/` | `/insights/delivery-confirmed-otif/` |
 | `/track-record/temperature-controlled-logistics/` | `/insights/cold-chain-sla-redesign/` |

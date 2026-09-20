@@ -50,6 +50,7 @@ for (const route of routes) {
 }
 
 const redirects = {
+  '/executive-leadership/': '/recruiter/',
   '/track-record/': '/insights/',
   '/track-record/otif-branch-network/': '/insights/delivery-confirmed-otif/',
   '/track-record/temperature-controlled-logistics/': '/insights/cold-chain-sla-redesign/',
