@@ -52,17 +52,17 @@ for (const route of routes) {
 }
 
 const allHtml = routes.map((route) => fs.readFileSync(htmlPath(route), 'utf8')).join('\n');
-if (/PGCert in Sustainability|Sustainability \(in progress\)/i.test(allHtml)) errors.push('Outdated qualification wording found');
-if (/£330m|GBP 330 million/i.test(allHtml)) errors.push('Combined scope figure found');
+if (/PGCert in Sustainability|Sustainability \(in progress\)|in progress/i.test(allHtml)) errors.push('Outdated qualification wording found');
+if (/£330|330m|GBP 330 million/i.test(allHtml)) errors.push('Combined scope figure found');
 if (/Owner-approved wording: retain the Punjabi meaning and transliteration/i.test(allHtml)) errors.push('Internal editorial wording found in public output');
 if (/href="\/track-record\//.test(allHtml)) errors.push('Obsolete /track-record/ link found');
-if (!allHtml.includes('Turning operational complexity into measurable performance')) errors.push('Required homepage hero wording missing');
+if (!allHtml.includes('Making complex operations clearer — and easier to run.')) errors.push('Required homepage hero wording missing');
 for (const route of ['/client/', '/recruiter/', '/peer/']) if (!routes.includes(route)) errors.push(`Audience route missing: ${route}`);
 if (routes.includes('/executive-leadership/')) errors.push('Legacy executive-leadership route must not remain canonical');
 const executiveRedirect = fs.readFileSync(path.join(dist, 'executive-leadership', 'index.html'), 'utf8');
 if (!executiveRedirect.includes('href="https://phullinsights.com/recruiter/"') || !executiveRedirect.includes('url=/recruiter/')) errors.push('Legacy executive-leadership redirect is incorrect');
 for (const discipline of ['Operations', 'Supply Chain', 'Transformation', 'Sustainable Performance']) if (!allHtml.includes(`>${discipline}<`)) errors.push(`Four-discipline model wording missing: ${discipline}`);
-if (!titles.has('JourneyIQ Operational Diagnostic Concept | Phull Insights')) errors.push('JourneyIQ temporary working-name title missing');
+if (!titles.has('JourneyIQ Operational Diagnostic Concept | Phull Insights')) errors.push('JourneyIQ page title missing');
 if (!allHtml.includes('Postgraduate Certificate in Sustainability, Cranfield University, 2026')) errors.push('Exact Cranfield qualification wording missing');
 if (!allHtml.includes('£230m revenue scope') || !allHtml.includes('£100m P&amp;L accountability')) errors.push('Separate scope proof points missing');
 if (fs.existsSync(path.join(dist, 'sitemap.xml'))) errors.push('Preview must not include sitemap.xml');
@@ -76,4 +76,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`Validated ${routes.length} routes: links, unique metadata, canonicals, noindex, H1s and JSON-LD all pass.`);
+console.log(`Validated ${routes.length} routes: links, unique metadata, canonicals, noindex, H1s, JSON-LD and truth-lock checks all pass.`);
