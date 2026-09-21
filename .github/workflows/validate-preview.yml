@@ -1,0 +1,22 @@
+name: Validate flow SEO preview
+on:
+  push:
+    branches:
+      - preview/flow-seo-v2
+permissions:
+  contents: read
+jobs:
+  validate-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build preview
+        run: node work/build-preview.js
+      - name: Validate preview
+        run: node work/validate-preview.js
+      - name: Upload preview artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: phull-insights-flow-seo-v2-preview
+          path: dist
+          retention-days: 14
