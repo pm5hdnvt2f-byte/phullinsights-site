@@ -14,7 +14,7 @@
 - [x] JourneyIQ is retained temporarily and marked for next-version review.
 - [x] The rich form specification routes Client, Recruiter and Peer separately to one planned recipient.
 - [x] Form submission is disabled so the preview does not collect or transmit personal information.
-- [x] Owner approval for the revised visible copy and audience journeys is recorded (20 September 2026).
+- [x] Owner approval for the revised visible copy and audience journeys is recorded (21 September 2026).
 - [x] Punjabi meaning/transliteration is retained per owner instruction.
 - [x] LinkedIn recommendations are referenced through the public profile instead of copied.
 - [x] Proposed legacy redirect map is documented.
@@ -40,4 +40,4 @@
 - [ ] JourneyIQ naming decision and any rename/redirect plan are recorded for the next version.
 - [ ] Production crawl confirms 200 status, redirects, canonicals and no stale `/track-record/` links.
 - [ ] Production sitemap contains only live, canonical, indexable URLs.
-- [x] Owner approval and production release date are recorded as 20 September 2026.
+- [x] Owner approval and production release date are recorded as 21 September 2026.

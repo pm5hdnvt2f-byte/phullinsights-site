@@ -30,7 +30,7 @@ export const methodology = [
     step: "01",
     name: "Map",
     description:
-      "Trace the physical and information flow as it actually runs — including the handoffs, workarounds, and exceptions that formal process maps omit.",
+      "Trace the physical and information flow as it actually runs, including the handoffs, workarounds, and exceptions that formal process maps omit.",
   },
   {
     step: "02",
@@ -361,7 +361,7 @@ export const posts: Post[] = [
       {
         heading: "What this scenario does not promise",
         paragraphs: [
-          "No diagnostic can make fragmented data complete by assertion. Some questions will remain unanswered, and some source processes may need to change before monitoring is reliable. The credible result is a clearer evidence base, an explicit list of limitations, and a prioritised next decision — not a claim that every spreadsheet has been replaced.",
+          "No diagnostic can make fragmented data complete by assertion. Some questions will remain unanswered, and some source processes may need to change before monitoring is reliable. The credible result is a clearer evidence base, an explicit list of limitations, and a prioritised next decision, not a claim that every spreadsheet has been replaced.",
         ],
       },
     ],
@@ -388,7 +388,7 @@ export const posts: Post[] = [
         heading: "Four tests before a build",
         paragraphs: [
           "The first test is access: can the organisation provide usable operational data under acceptable controls? The second is novelty: does the analysis reveal something material that the team did not already know? The third is actionability: can an accountable leader use the finding to choose an intervention? The fourth is repeatability: does the need recur often enough to justify product investment rather than a one-off service?",
-          "A positive reaction to a prototype is not the same as passing these tests. The strongest evidence is a customer providing data, investing management time, acting on the result, and — for a commercial proposition — being willing to pay for the work.",
+          "A positive reaction to a prototype is not the same as passing these tests. The strongest evidence is a customer providing data, investing management time, acting on the result and, for a commercial proposition, being willing to pay for the work.",
         ],
       },
       {

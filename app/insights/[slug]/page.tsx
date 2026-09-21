@@ -18,7 +18,7 @@ export async function generateMetadata({
   const post = posts.find((p) => p.slug === slug);
   if (!post) return {};
   return {
-    title: `${post.title} — Phull Insights`,
+    title: `${post.title} | Phull Insights`,
     description: post.excerpt,
   };
 }

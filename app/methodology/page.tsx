@@ -3,7 +3,7 @@ import Link from "next/link";
 import { evidenceLevels, methodology } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Diagnostic methodology — Phull Insights",
+  title: "Diagnostic methodology | Phull Insights",
   description:
     "The Phull Insights method for mapping, measuring, diagnosing, and rebuilding complex supply-chain journeys.",
 };
@@ -41,7 +41,7 @@ export default function Methodology() {
           <p className="mt-5 max-w-2xl text-[1.05rem] leading-relaxed text-mist/75">
             The method combines operational mapping, disciplined measurement,
             structured diagnosis, and practical redesign. It is designed to
-            make the reasoning visible — including the points where the data
+            make the reasoning visible, including the points where the data
             cannot support a confident conclusion.
           </p>
         </div>

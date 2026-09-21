@@ -14,7 +14,7 @@ export default function Home() {
             </h1>
             <p className="mt-6 max-w-md text-[1.05rem] leading-relaxed text-mist/75">
               Phull Insights is an operations advisory and technology practice
-              for supply chains that can&apos;t afford to guess — regulated
+              for supply chains that can&apos;t afford to guess: regulated
               manufacturing, medtech distribution, and multi-site networks
               under pressure to perform.
             </p>
@@ -79,8 +79,8 @@ export default function Home() {
         <div className="mx-auto max-w-5xl px-6 py-14 md:px-8">
           <p className="max-w-2xl text-[1.05rem] leading-relaxed text-slate">
             Most operating reviews start from an org chart and a set of
-            opinions. This practice starts from the actual journey — the
-            emails, exceptions, and handoffs a network produces every day —
+            opinions. This practice starts from the actual journey: the
+            emails, exceptions, and handoffs a network produces every day,
             and builds the case for change from there.
           </p>
           <dl className="mt-10 grid gap-8 sm:grid-cols-3">
@@ -99,7 +99,7 @@ export default function Home() {
             <div>
               <dt className="font-serif text-3xl text-ink">4</dt>
               <dd className="mt-1 text-sm text-slate">
-                stages in the diagnostic — map, measure, diagnose, rebuild
+                stages in the diagnostic: map, measure, diagnose, rebuild
               </dd>
             </div>
           </dl>

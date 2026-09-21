@@ -45,11 +45,26 @@ for (const route of routes) {
 }
 
 const allHtml = routes.map((route) => fs.readFileSync(htmlPath(route), 'utf8')).join('\n');
+if (/—|&mdash;|&#8212;|&#x2014;/i.test(allHtml)) errors.push('Em dash found in production website');
 if (/PGCert in Sustainability|Sustainability \(in progress\)/i.test(allHtml)) errors.push('Outdated qualification wording found');
 if (/£330m|GBP 330 million/i.test(allHtml)) errors.push('Combined scope figure found');
 if (/Owner-approved wording: retain the Punjabi meaning and transliteration/i.test(allHtml)) errors.push('Internal editorial wording found in public output');
 if (!allHtml.includes('Postgraduate Certificate in Sustainability, Cranfield University, 2026')) errors.push('Exact qualification wording missing');
 if (!allHtml.includes('£230m revenue scope') || !allHtml.includes('£100m P&amp;L accountability')) errors.push('Separate scope proof points missing');
+for (const route of routes) {
+  const html = fs.readFileSync(htmlPath(route), 'utf8');
+  if (!/<nav class="desktop-nav"[\s\S]*?<a href="\/insights\/">Insights<\/a>/.test(html)) errors.push(`${route}: Insights missing from primary navigation`);
+  if (route !== '/insights/' && /href="\/insights\/[^"/]+\/"/.test(html)) errors.push(`${route}: article links must be selected through the Insights hub`);
+}
+const publishedCaseRoutes = routes.filter((route) => /^\/insights\/[^/]+\/$/.test(route));
+for (const route of publishedCaseRoutes) {
+  const html = fs.readFileSync(htmlPath(route), 'utf8');
+  if (/Scenario status:|Illustrative scenario/i.test(html)) errors.push(`${route}: old illustrative scenario wording found`);
+  if (!html.includes('Identity anonymised. Every published number is valid')) errors.push(`${route}: verified evidence wording missing`);
+}
+const insightsHub = fs.readFileSync(htmlPath('/insights/'), 'utf8');
+if (!insightsHub.includes('Identity anonymised. Every number verified.')) errors.push('Insights evidence standard heading missing');
+if (!insightsHub.includes('Every number published in a case study is valid')) errors.push('Insights verification explanation missing');
 if (routes.includes('/executive-leadership/')) errors.push('Legacy executive-leadership route must not remain canonical');
 const executiveRedirect = fs.readFileSync(path.join(dist, 'executive-leadership', 'index.html'), 'utf8');
 if (!executiveRedirect.includes('href="https://phullinsights.com/recruiter/"') || !executiveRedirect.includes('url=/recruiter/')) errors.push('Legacy executive-leadership redirect is incorrect');

@@ -52,14 +52,14 @@ for (const route of routes) {
 const redirects = {
   '/executive-leadership/': '/recruiter/',
   '/track-record/': '/insights/',
-  '/track-record/otif-branch-network/': '/insights/delivery-confirmed-otif/',
+  '/track-record/otif-branch-network/': '/insights/otif-score-that-hid-the-real-problem/',
   '/track-record/temperature-controlled-logistics/': '/insights/cold-chain-sla-redesign/',
   '/track-record/regulated-medtech-baseline/': '/insights/',
   '/track-record/network-restructuring/': '/insights/',
   '/medtech-supply-chain-consultancy/': '/services/medtech-supply-chain/',
   '/operations-network-transformation/': '/services/operations-transformation/',
   '/supply-chain-diagnostic/': '/services/supply-chain-consultancy/',
-  '/insights/otif-score-that-hid-the-real-problem/': '/insights/delivery-confirmed-otif/',
+  '/insights/delivery-confirmed-otif/': '/insights/otif-score-that-hid-the-real-problem/',
   '/insights/inventory-rises-while-service-falls/': '/insights/inventory-service-protected/',
   '/insights/when-a-control-becomes-a-queue/': '/insights/',
   '/insights/every-spreadsheet-tells-a-different-story/': '/methodology/',
@@ -85,7 +85,7 @@ fs.writeFileSync(path.join(dist, 'CNAME'), 'phullinsights.com\n');
 fs.writeFileSync(path.join(dist, '.nojekyll'), '');
 fs.writeFileSync(path.join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${routes.map((route) => `  <url><loc>${base}${route}</loc><lastmod>2026-09-20</lastmod></url>`).join('\n')}
+${routes.map((route) => `  <url><loc>${base}${route}</loc><lastmod>2026-09-21</lastmod></url>`).join('\n')}
 </urlset>
 `);
 

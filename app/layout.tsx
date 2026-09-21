@@ -19,7 +19,7 @@ const plexSans = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Phull Insights — Operations advisory and technology practice",
+  title: "Phull Insights | Operations advisory and technology practice",
   description:
     "Phull Insights provides operations advisory and the JourneyIQ supply-chain diagnostic for regulated manufacturing, MedTech, and complex networks.",
   metadataBase: new URL("https://phullinsights.com"),

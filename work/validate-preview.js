@@ -56,7 +56,22 @@ if (/PGCert in Sustainability|Sustainability \(in progress\)|in progress/i.test(
 if (/£330|330m|GBP 330 million/i.test(allHtml)) errors.push('Combined scope figure found');
 if (/Owner-approved wording: retain the Punjabi meaning and transliteration/i.test(allHtml)) errors.push('Internal editorial wording found in public output');
 if (/href="\/track-record\//.test(allHtml)) errors.push('Obsolete /track-record/ link found');
-if (!allHtml.includes('Making complex operations clearer — and easier to run.')) errors.push('Required homepage hero wording missing');
+if (!allHtml.includes('Making complex operations clearer and easier to run.')) errors.push('Required homepage hero wording missing');
+if (/—|&mdash;|&#8212;|&#x2014;/i.test(allHtml)) errors.push('Em dash found in generated website');
+for (const route of routes) {
+  const html = fs.readFileSync(htmlPath(route), 'utf8');
+  if (!/<nav class="desktop-nav"[\s\S]*?<a href="\/insights\/">Insights<\/a>/.test(html)) errors.push(`${route}: Insights missing from primary navigation`);
+  if (route !== '/insights/' && /href="\/insights\/[^"/]+\/"/.test(html)) errors.push(`${route}: article links must be selected through the Insights hub`);
+}
+const publishedCaseRoutes = routes.filter((route) => /^\/insights\/[^/]+\/$/.test(route));
+for (const route of publishedCaseRoutes) {
+  const html = fs.readFileSync(htmlPath(route), 'utf8');
+  if (/Scenario status:|Illustrative scenario/i.test(html)) errors.push(`${route}: old illustrative scenario wording found`);
+  if (!html.includes('Identity anonymised. Every published number is valid')) errors.push(`${route}: verified evidence wording missing`);
+}
+const insightsHub = fs.readFileSync(htmlPath('/insights/'), 'utf8');
+if (!insightsHub.includes('Identity anonymised. Every number verified.')) errors.push('Insights evidence standard heading missing');
+if (!insightsHub.includes('Every number published in a case study is valid')) errors.push('Insights verification explanation missing');
 for (const route of ['/client/', '/recruiter/', '/peer/']) if (!routes.includes(route)) errors.push(`Audience route missing: ${route}`);
 if (routes.includes('/executive-leadership/')) errors.push('Legacy executive-leadership route must not remain canonical');
 const executiveRedirect = fs.readFileSync(path.join(dist, 'executive-leadership', 'index.html'), 'utf8');

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { methodology } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Services — Phull Insights",
+  title: "Services | Phull Insights",
   description:
     "Supply-chain diagnostics, operations advisory, focused monitoring, and team capability for regulated and complex operating networks.",
 };

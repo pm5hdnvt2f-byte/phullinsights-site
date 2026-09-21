@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact — Phull Insights",
+  title: "Contact | Phull Insights",
   description: "Start a conversation with Phull Insights.",
 };
 
@@ -63,8 +63,8 @@ export default function Contact() {
               A useful first email includes:
             </p>
             <ul className="mt-4 max-w-md space-y-3 border-t border-line pt-4 text-[0.95rem] leading-relaxed text-slate">
-              <li>What the network or operation looks like today — size, sites, and volume.</li>
-              <li>The specific symptom prompting the conversation — cost, service, or compliance.</li>
+              <li>What the network or operation looks like today: size, sites, and volume.</li>
+              <li>The specific symptom prompting the conversation: cost, service, or compliance.</li>
               <li>The management decision that is currently difficult to make with confidence.</li>
               <li>Whether you&apos;re exploring a JourneyIQ diagnostic, wider advisory support, or both.</li>
             </ul>

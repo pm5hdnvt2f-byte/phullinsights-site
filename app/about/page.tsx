@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About — Phull Insights",
+  title: "About | Phull Insights",
   description:
     "Phull Insights was founded by Pupsi Phull, an operations director with two decades in regulated manufacturing and multi-site distribution.",
 };
@@ -63,15 +63,15 @@ export default function About() {
             <p>
               Before that, as Operations Director at RS Group, he held
               responsibility for a £100m P&amp;L across a 16-branch network
-              and around 180 colleagues — and, before that, a Value-Added
+              and around 180 colleagues. Before that, he held a Value-Added
               Services and Technical Director role spanning a £230m revenue
               scope. Earlier roles at DHL GlobalMatch, CRYOPDP, and DX Group
               built a grounding in international, temperature-controlled, and
               multi-carrier distribution.
             </p>
             <p>
-              That range — regulated manufacturing on one side, high-volume
-              multi-site distribution on the other — is why the practice
+              That range, from regulated manufacturing to high-volume
+              multi-site distribution, is why the practice
               exists. Most advisory work specialises in one or the other.
               Few operators have had to be personally accountable for the
               P&amp;L, the compliance file, and the branch network all at
@@ -79,9 +79,9 @@ export default function About() {
               the one implementing them.
             </p>
             <p>
-              Phull Insights was built to bring that same standard —
+              Phull Insights was built to bring that same standard:
               evidence before opinion, and a plan the team can run without
-              the consultant in the room — to a small number of engagements
+              the consultant in the room, to a small number of engagements
               at a time.
             </p>
           </div>

@@ -4,7 +4,7 @@ import RouteMark from "@/components/RouteMark";
 import { diagnosticOutputs, methodology } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "JourneyIQ supply chain diagnostic — Phull Insights",
+  title: "JourneyIQ supply chain diagnostic | Phull Insights",
   description:
     "An evidence-led supply-chain diagnostic for regulated manufacturers, MedTech businesses, and complex operating networks.",
 };
@@ -13,7 +13,7 @@ const questions = [
   "Where are service, inventory, and management effort being lost?",
   "Which exceptions are isolated events, and which are repeatable patterns?",
   "What is observed, what is calculated, and what still depends on an assumption?",
-  "Which intervention deserves attention first — and what evidence supports it?",
+  "Which intervention deserves attention first, and what evidence supports it?",
 ];
 
 const suitableFor = [
@@ -45,7 +45,7 @@ export default function JourneyIQ() {
             <p className="mt-6 max-w-xl text-[1.05rem] leading-relaxed text-mist/75">
               JourneyIQ reconstructs the end-to-end supply-chain journey,
               identifies where performance and value may be leaking, and
-              turns the evidence into a focused improvement roadmap — without
+              turns the evidence into a focused improvement roadmap without
               making an ERP replacement the starting assumption.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-6">
@@ -170,7 +170,7 @@ export default function JourneyIQ() {
             <ul className="mt-6 space-y-3 border-t border-line pt-6 text-[0.95rem] leading-relaxed text-slate">
               {suitableFor.map((item) => (
                 <li key={item} className="flex gap-3">
-                  <span aria-hidden="true" className="text-brass">—</span>
+                  <span aria-hidden="true" className="text-brass">•</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -181,7 +181,7 @@ export default function JourneyIQ() {
             <ul className="mt-6 space-y-3 border-t border-line pt-6 text-[0.95rem] leading-relaxed text-slate">
               {notDesignedFor.map((item) => (
                 <li key={item} className="flex gap-3">
-                  <span aria-hidden="true" className="text-brass">—</span>
+                  <span aria-hidden="true" className="text-brass">•</span>
                   <span>{item}</span>
                 </li>
               ))}

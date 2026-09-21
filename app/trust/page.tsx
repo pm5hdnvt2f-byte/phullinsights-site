@@ -3,7 +3,7 @@ import Link from "next/link";
 import { trustPrinciples } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Trust and data principles — Phull Insights",
+  title: "Trust and data principles | Phull Insights",
   description:
     "How Phull Insights approaches data minimisation, evidence, AI-assisted analysis, security boundaries, and human review.",
 };
@@ -82,7 +82,7 @@ export default function Trust() {
                 "Document incident, backup, and recovery expectations appropriate to the engagement",
               ].map((item) => (
                 <li key={item} className="flex gap-3">
-                  <span aria-hidden="true" className="text-brass">—</span>
+                  <span aria-hidden="true" className="text-brass">•</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -108,7 +108,7 @@ export default function Trust() {
               AI-assisted outputs should retain source references, expose
               confidence and assumptions, and remain subject to human review.
               Where evidence is insufficient, the appropriate output is a
-              caveat or a stop decision — not a more confident sentence.
+              caveat or a stop decision, not a more confident sentence.
             </p>
           </div>
         </div>

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { posts } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Insights — Phull Insights",
+  title: "Insights | Phull Insights",
   description:
     "Illustrative scenario analyses and practice notes on regulated manufacturing, MedTech, and complex supply chains.",
 };
