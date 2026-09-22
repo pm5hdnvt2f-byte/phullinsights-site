@@ -74,15 +74,31 @@ if (!allHtml.includes('£230m revenue scope') || !allHtml.includes('£100m P&amp
 for (const route of routes) {
   const html = fs.readFileSync(htmlPath(route), 'utf8');
   if (!/<nav class="desktop-nav"[\s\S]*?<a href="\/insights\/">Insights<\/a>/.test(html)) errors.push(`${route}: Insights missing from primary navigation`);
-  if (route !== '/insights/' && /href="\/insights\/[^"/]+\/"/.test(html)) errors.push(`${route}: article links must be selected through the Insights hub`);
+  if (!route.startsWith('/insights/') && /href="\/insights\/[^"/]+\/"/.test(html)) errors.push(`${route}: article links must be selected through the Insights hub`);
 }
-const publishedCaseRoutes = routes.filter((route) => /^\/insights\/[^/]+\/$/.test(route));
+const publishedCaseRoutes = [
+  '/insights/otif-score-that-hid-the-real-problem/',
+  '/insights/inventory-service-protected/',
+  '/insights/cold-chain-sla-redesign/',
+];
 for (const route of publishedCaseRoutes) {
   const html = fs.readFileSync(htmlPath(route), 'utf8');
   if (/Scenario status:|Illustrative scenario/i.test(html)) errors.push(`${route}: old illustrative scenario wording found`);
   if (!html.includes('Identity anonymised. Every published number is valid')) errors.push(`${route}: verified evidence wording missing`);
 }
 const insightsHub = fs.readFileSync(htmlPath('/insights/'), 'utf8');
+const { articles, publicationOrder } = require('./articles');
+if (articles.length !== 16 || publicationOrder.length !== 16) errors.push('Expected 16 articles');
+const orderedArticleRoutes = publicationOrder.map((number) => `/insights/${articles.find((article) => article.number === number)?.slug}/`);
+for (const route of orderedArticleRoutes) {
+  if (!routes.includes(route)) errors.push(`${route}: article route missing`);
+  const html = fs.existsSync(htmlPath(route)) ? fs.readFileSync(htmlPath(route), 'utf8') : '';
+  if (!html.includes('"@type":"BlogPosting"')) errors.push(`${route}: BlogPosting schema missing`);
+  if (!html.includes('Three things leaders can do now') || !html.includes('Phull Insights Perspective') || !html.includes('Related articles')) errors.push(`${route}: article layout incomplete`);
+  if (!html.includes('historical research, not current 2026 corporate policies')) errors.push(`${route}: historical evidence boundary missing`);
+}
+const indexPositions = orderedArticleRoutes.map((route) => insightsHub.indexOf(`href="${route}"`));
+if (indexPositions.some((position) => position < 0) || indexPositions.some((position, index) => index > 0 && position <= indexPositions[index - 1])) errors.push('Insights article publication order is incorrect');
 if (!insightsHub.includes('Identity anonymised. Every number verified.')) errors.push('Insights evidence standard heading missing');
 if (!insightsHub.includes('Every number published in a case study is valid')) errors.push('Insights verification explanation missing');
 if (routes.includes('/executive-leadership/')) errors.push('Legacy executive-leadership route must not remain canonical');
