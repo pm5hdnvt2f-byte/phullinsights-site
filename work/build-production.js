@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const { renderSitemapXml } = require('../lib/sitemap');
 
 const root = path.resolve(__dirname, '..');
 const dist = path.join(root, 'dist');
@@ -83,11 +85,7 @@ Sitemap: ${base}/sitemap.xml
 `);
 fs.writeFileSync(path.join(dist, 'CNAME'), 'phullinsights.com\n');
 fs.writeFileSync(path.join(dist, '.nojekyll'), '');
-fs.writeFileSync(path.join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${routes.map((route) => `  <url><loc>${base}${route}</loc><lastmod>2026-09-22</lastmod></url>`).join('\n')}
-</urlset>
-`);
+fs.writeFileSync(path.join(dist, 'sitemap.xml'), renderSitemapXml(routes));
 
 let notFound = fs.readFileSync(path.join(dist, '404.html'), 'utf8');
 notFound = notFound.replace('index, follow, max-image-preview:large', 'noindex, follow');

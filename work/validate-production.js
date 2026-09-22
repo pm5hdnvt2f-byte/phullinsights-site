@@ -1,5 +1,7 @@
 const fs = require('fs');
 const path = require('path');
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const { createSitemapEntries } = require('../lib/sitemap');
 
 const dist = path.resolve(__dirname, '../dist');
 const base = 'https://phullinsights.com';
@@ -7,6 +9,24 @@ const routes = JSON.parse(fs.readFileSync(path.join(dist, 'routes.json'), 'utf8'
 const errors = [];
 const titles = new Map();
 const descriptions = new Map();
+const requiredSitemapRoutes = [
+  '/',
+  '/client/',
+  '/recruiter/',
+  '/peer/',
+  '/services/',
+  '/services/supply-chain-consultancy/',
+  '/services/operations-transformation/',
+  '/services/medtech-supply-chain/',
+  '/services/operational-excellence/',
+  '/methodology/',
+  '/about/',
+  '/insights/',
+  '/trust/',
+  '/privacy/',
+  '/journeyiq/',
+  '/contact/',
+];
 
 function htmlPath(route) {
   return route === '/' ? path.join(dist, 'index.html') : path.join(dist, route.replace(/^\//, ''), 'index.html');
@@ -75,7 +95,49 @@ if (!allHtml.includes('mailto:hello@phullinsights.com?subject=Peer%20or%20speaki
 
 const robots = fs.readFileSync(path.join(dist, 'robots.txt'), 'utf8');
 if (!robots.includes('Allow: /') || robots.includes('Disallow: /')) errors.push('Production robots policy is incorrect');
-if (!fs.existsSync(path.join(dist, 'sitemap.xml'))) errors.push('Production sitemap missing');
+const sitemapPath = path.join(dist, 'sitemap.xml');
+if (!fs.existsSync(sitemapPath)) {
+  errors.push('Production sitemap missing');
+} else {
+  const sitemap = fs.readFileSync(sitemapPath, 'utf8');
+  const sitemapEntries = [...sitemap.matchAll(/<url>\s*<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>\s*<changefreq>([^<]+)<\/changefreq>\s*<priority>([^<]+)<\/priority>\s*<\/url>/g)]
+    .map((match) => ({ url: match[1], lastModified: match[2], changeFrequency: match[3], priority: Number(match[4]) }));
+  let expectedSitemapEntries = [];
+  try {
+    expectedSitemapEntries = createSitemapEntries(routes);
+  } catch (error) {
+    errors.push(error.message);
+  }
+
+  if (sitemapEntries.length !== routes.length) {
+    errors.push(`Sitemap contains ${sitemapEntries.length} entries for ${routes.length} canonical routes`);
+  }
+  if (new Set(sitemapEntries.map((entry) => entry.url)).size !== sitemapEntries.length) {
+    errors.push('Sitemap contains duplicate URLs');
+  }
+  for (const requiredRoute of requiredSitemapRoutes) {
+    if (!routes.includes(requiredRoute)) errors.push(`Required canonical route missing: ${requiredRoute}`);
+  }
+  for (const expected of expectedSitemapEntries) {
+    const actual = sitemapEntries.find((entry) => entry.url === expected.url);
+    if (!actual) {
+      errors.push(`Sitemap URL missing: ${expected.url}`);
+      continue;
+    }
+    if (
+      actual.lastModified !== expected.lastModified
+      || actual.changeFrequency !== expected.changeFrequency
+      || actual.priority !== expected.priority
+    ) {
+      errors.push(`Sitemap metadata mismatch: ${expected.url}`);
+    }
+  }
+  for (const route of publishedCaseRoutes) {
+    if (!sitemapEntries.some((entry) => entry.url === `${base}${route}`)) {
+      errors.push(`Published Insight missing from sitemap: ${route}`);
+    }
+  }
+}
 if (fs.readFileSync(path.join(dist, 'CNAME'), 'utf8').trim() !== 'phullinsights.com') errors.push('CNAME missing or incorrect');
 if (fs.existsSync(path.join(dist, 'contact', 'thank-you', 'index.html'))) errors.push('Inactive thank-you route should not ship');
 
