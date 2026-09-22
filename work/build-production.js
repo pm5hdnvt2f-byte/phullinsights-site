@@ -85,7 +85,7 @@ fs.writeFileSync(path.join(dist, 'CNAME'), 'phullinsights.com\n');
 fs.writeFileSync(path.join(dist, '.nojekyll'), '');
 fs.writeFileSync(path.join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${routes.map((route) => `  <url><loc>${base}${route}</loc><lastmod>2026-09-21</lastmod></url>`).join('\n')}
+${routes.map((route) => `  <url><loc>${base}${route}</loc><lastmod>2026-09-22</lastmod></url>`).join('\n')}
 </urlset>
 `);
 

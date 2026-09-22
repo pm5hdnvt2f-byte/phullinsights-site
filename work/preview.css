@@ -354,3 +354,407 @@ input:focus, select:focus, textarea:focus { outline: 3px solid color-mix(in srgb
 .risk-line { display:flex; align-items:center; justify-content:space-between; gap:1rem; position:relative; min-height:180px; }.risk-line:before{content:"";position:absolute;left:5%;right:5%;height:1px;background:var(--border)}.risk-line span,.risk-line i{position:relative;z-index:1;padding:.7rem;background:var(--raised);font-style:normal}.risk-line i{border:1px solid var(--brass);color:var(--brass)}
 @media(max-width:900px){.refined-hero,.editorial-split,.journey-hero-grid{grid-template-columns:1fr}.orbital-visual{width:280px}.signal-decision{grid-template-columns:1fr}.metric-ledger{grid-template-columns:1fr}.metric-ledger div:nth-child(even){padding-left:0;border-left:0}}
 @media(max-width:680px){.service-editorial-grid,.pillar-diagram{grid-template-columns:1fr}.service-editorial-grid article,.service-editorial-grid article:nth-child(odd),.service-editorial-grid article:nth-child(even){padding:1.6rem 0;border-right:0}.pillar-diagram span{border-right:0;border-bottom:1px solid var(--border)}.depth-progress{min-height:210px;padding:1rem}.journey-simple{grid-template-columns:1fr}.risk-line{flex-direction:column;align-items:stretch}.risk-line:before{left:50%;top:10%;bottom:10%;right:auto;width:1px;height:auto}.metric-ledger div{flex-direction:column;gap:.3rem}.metric-ledger span{text-align:left}}
+
+/* Three Routes card language
+   The uploaded Three Routes composition is the reference for surface,
+   spacing, type hierarchy, CTA placement and interaction across the site. */
+:root {
+  --card-radius: 22px;
+  --card-gap: 1.25rem;
+  --card-pad-x: 1.75rem;
+  --card-pad-top: 1.25rem;
+  --card-pad-bottom: 1rem;
+  --card-border: color-mix(in srgb, var(--border) 82%, transparent);
+  --card-hover-border: color-mix(in srgb, var(--brass-light) 62%, var(--border));
+  --card-hover-surface: color-mix(in srgb, var(--surface) 94%, var(--navy-mid));
+  --card-shadow: 0 14px 36px rgba(16, 47, 61, .1);
+}
+
+:root[data-theme="dark"] {
+  --card-hover-surface: color-mix(in srgb, var(--surface) 88%, var(--navy-mid));
+  --card-shadow: 0 16px 38px rgba(0, 0, 0, .22);
+}
+
+.card-tag,
+.route-card > span:first-child,
+.step-grid article > span,
+.service-editorial-grid article > span,
+.topic-grid > a > span:first-child {
+  margin: 0;
+  color: var(--brass-light);
+  font: 500 .6875rem/1.4 "DM Mono", monospace;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+
+.route-grid,
+.practice-grid,
+.profile-grid,
+.insight-grid,
+.about-grid,
+.step-grid,
+.topic-grid,
+.link-grid,
+.related-panel,
+.service-editorial-grid {
+  gap: var(--card-gap);
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.route-card,
+.practice-card,
+.profile-grid article,
+.insight-card,
+.about-grid article,
+.step-grid article,
+.topic-grid a,
+.link-grid a,
+.related-panel a,
+.service-editorial-grid article,
+.contact-route-list article,
+.editorial-card,
+.side-panel,
+.dictionary-card,
+.form-panel,
+.editorial-aside {
+  min-width: 0;
+  padding: var(--card-pad-top) var(--card-pad-x) var(--card-pad-bottom);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  background: var(--surface);
+  box-shadow: none;
+}
+
+.route-card,
+.practice-card,
+.profile-grid article,
+.insight-card,
+.about-grid article,
+.step-grid article,
+.topic-grid a,
+.service-editorial-grid article,
+.editorial-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.route-card h2,
+.route-card h3,
+.practice-card h2,
+.profile-grid h2,
+.insight-card h2,
+.about-grid h2,
+.step-grid h2,
+.topic-grid strong,
+.service-editorial-grid h3,
+.contact-route-list h2 {
+  min-height: 0;
+  margin: .875rem 0 0;
+  font: 700 1.375rem/1.2 "Playfair Display", Georgia, serif;
+  letter-spacing: -.01em;
+}
+
+.route-card p:not(.card-tag),
+.practice-card p:not(.card-tag),
+.profile-grid article p:not(.card-tag),
+.insight-card > p,
+.about-grid article p:not(.card-tag),
+.step-grid article p,
+.service-editorial-grid article p:not(.card-tag),
+.contact-route-list article p:not(.card-tag) {
+  margin: .375rem 0 0;
+  color: var(--muted);
+  font-size: .875rem;
+  line-height: 1.5;
+}
+
+.card-cta,
+.route-card > .text-link,
+.insight-card > .text-link,
+.service-editorial-grid article > .text-link {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: auto;
+  padding-top: .625rem;
+  border-top: 1px solid var(--card-border);
+  color: var(--brass);
+  font-size: .875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.card-cta span[aria-hidden="true"],
+.route-card > .text-link span[aria-hidden="true"],
+.insight-card > .text-link span[aria-hidden="true"],
+.service-editorial-grid article > .text-link span[aria-hidden="true"] {
+  display: inline-block;
+  transition: transform .2s ease;
+}
+
+.route-card > p + .card-cta,
+.insight-card > p + .card-cta,
+.service-editorial-grid article > p + .card-cta {
+  margin-top: auto;
+}
+
+.route-card,
+.practice-card,
+.profile-grid article,
+.insight-card,
+.about-grid article,
+.step-grid article,
+.service-editorial-grid article,
+.contact-route-list article,
+.side-panel,
+.dictionary-card,
+.form-panel,
+.editorial-aside {
+  transition: border-color .2s ease, background-color .2s ease, box-shadow .2s ease;
+}
+
+.audience-pill,
+.topic-grid a,
+.link-grid a,
+.related-panel a,
+.editorial-card {
+  transition: border-color .2s ease, background-color .2s ease, box-shadow .2s ease;
+}
+
+.route-card:has(a:hover),
+.route-card:focus-within,
+.insight-card:has(a:hover),
+.insight-card:focus-within,
+.service-editorial-grid article:has(a:hover),
+.service-editorial-grid article:focus-within,
+.audience-pill:hover,
+.topic-grid a:hover,
+.link-grid a:hover,
+.related-panel a:hover,
+.editorial-card:hover {
+  border-color: var(--card-hover-border);
+  background: var(--card-hover-surface);
+  box-shadow: var(--card-shadow);
+  transform: none;
+}
+
+.audience-pill:focus-visible,
+.topic-grid a:focus-visible,
+.link-grid a:focus-visible,
+.related-panel a:focus-visible,
+.editorial-card:focus-visible,
+.card-cta:focus-visible {
+  outline: 2px solid var(--brass-light);
+  outline-offset: 3px;
+}
+
+.route-card:has(a:hover) .card-cta span[aria-hidden="true"],
+.route-card:focus-within .card-cta span[aria-hidden="true"],
+.insight-card:has(a:hover) .card-cta span[aria-hidden="true"],
+.insight-card:focus-within .card-cta span[aria-hidden="true"],
+.service-editorial-grid article:has(a:hover) .card-cta span[aria-hidden="true"],
+.service-editorial-grid article:focus-within .card-cta span[aria-hidden="true"],
+.audience-pill:hover .card-cta span[aria-hidden="true"],
+.audience-pill:focus-visible .card-cta span[aria-hidden="true"],
+.topic-grid a:hover .card-cta span[aria-hidden="true"],
+.topic-grid a:focus-visible .card-cta span[aria-hidden="true"] {
+  transform: translateX(4px);
+}
+
+/* The homepage route cards retain the brand palette while matching the
+   precise dark composition and proportions of the reference design. */
+.audience-section {
+  padding-block: 4rem;
+  color: var(--inverse);
+  background: var(--navy);
+}
+
+.audience-section .section-heading {
+  grid-template-columns: minmax(0, 1fr) 250px;
+  gap: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.audience-section .section-heading h2 {
+  font-size: 2.375rem;
+  line-height: 1.1;
+  letter-spacing: -.01em;
+}
+
+.audience-section .section-heading > p {
+  color: #a9b5bc;
+  font-size: .875rem;
+  line-height: 1.6;
+}
+
+.audience-pill-grid {
+  gap: var(--card-gap);
+}
+
+.audience-pill,
+.audience-recruiter,
+.audience-peer {
+  min-height: 188px;
+  padding: var(--card-pad-top) var(--card-pad-x) var(--card-pad-bottom);
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: var(--card-radius);
+  color: var(--inverse);
+  background: color-mix(in srgb, var(--navy) 84%, white);
+  box-shadow: none;
+}
+
+.audience-pill:hover,
+.audience-pill:focus-visible {
+  border-color: color-mix(in srgb, var(--brass-light) 62%, transparent);
+  background: color-mix(in srgb, var(--navy) 76%, white);
+  box-shadow: 0 16px 36px rgba(8, 24, 31, .2);
+}
+
+.audience-pill strong {
+  margin: .875rem 0 0;
+  color: var(--inverse);
+  font: 700 1.375rem/1.2 "Playfair Display", Georgia, serif;
+}
+
+.audience-pill > span:not(.card-tag) {
+  max-width: none;
+  margin-top: .375rem;
+  color: #a9b5bc;
+  font-size: .875rem;
+  line-height: 1.5;
+}
+
+.audience-pill .card-cta {
+  color: var(--brass-light);
+  border-top-color: rgba(255, 255, 255, .1);
+}
+
+.proof-grid,
+.credibility-grid,
+.impact-grid {
+  display: grid;
+  gap: var(--card-gap);
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.proof-item,
+.impact-grid article {
+  min-height: 150px;
+  padding: 1.5rem;
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  background: var(--surface);
+}
+
+.proof-item:last-child,
+.impact-grid article:last-child {
+  border: 1px solid var(--card-border);
+}
+
+.contact-route-list {
+  display: grid;
+  gap: var(--card-gap);
+}
+
+.contact-route-list article {
+  border-bottom: 1px solid var(--card-border);
+}
+
+.service-editorial-grid article,
+.service-editorial-grid article:nth-child(odd),
+.service-editorial-grid article:nth-child(even) {
+  min-height: 280px;
+  padding: var(--card-pad-top) var(--card-pad-x) var(--card-pad-bottom);
+  border: 1px solid var(--card-border);
+}
+
+.topic-grid a {
+  min-height: 210px;
+}
+
+.topic-grid strong {
+  margin-top: .875rem;
+}
+
+.topic-grid .card-cta {
+  margin-top: auto;
+}
+
+.link-grid a,
+.related-panel a {
+  align-items: center;
+  padding: 1.2rem 1.35rem;
+}
+
+.side-panel,
+.dictionary-card,
+.form-panel,
+.editorial-aside {
+  padding: 1.75rem;
+}
+
+@media (max-width: 900px) {
+  .audience-section .section-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .credibility-grid .proof-item,
+  .credibility-grid .proof-item:nth-child(-n+2),
+  .impact-grid article,
+  .impact-grid article:nth-child(-n+2) {
+    border: 1px solid var(--card-border);
+  }
+}
+
+@media (max-width: 680px) {
+  :root {
+    --card-gap: .875rem;
+    --card-pad-x: 1.25rem;
+  }
+
+  .audience-pill,
+  .audience-recruiter,
+  .audience-peer {
+    min-height: 188px;
+    border-radius: var(--card-radius);
+  }
+
+  .audience-section {
+    padding-block: 3.5rem;
+  }
+
+  .audience-section .section-heading h2 {
+    font-size: clamp(2rem, 10vw, 2.375rem);
+  }
+
+  .route-card,
+  .practice-card,
+  .profile-grid article,
+  .insight-card,
+  .about-grid article,
+  .step-grid article,
+  .topic-grid a,
+  .service-editorial-grid article,
+  .service-editorial-grid article:nth-child(odd),
+  .service-editorial-grid article:nth-child(even),
+  .contact-route-list article {
+    min-height: 0;
+    padding: var(--card-pad-top) var(--card-pad-x) var(--card-pad-bottom);
+    border: 1px solid var(--card-border);
+  }
+
+  .proof-item,
+  .credibility-grid .proof-item,
+  .impact-grid article {
+    min-height: 135px;
+    border: 1px solid var(--card-border);
+  }
+}
