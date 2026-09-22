@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <title>Contact Phull Insights | Operations Advisory Enquiries</title>
-  <meta name="description" content="Choose a client, recruiter or peer enquiry route for Phull Insights. No operational data is needed for the first conversation.">
+  <title>Contact Pupsi Phull | Phull Insights</title>
+  <meta name="description" content="Send Pupsi Phull a client, recruiter or peer enquiry through the Phull Insights contact form.">
   <link rel="canonical" href="https://phullinsights.com/contact/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Phull Insights">
-  <meta property="og:title" content="Contact Phull Insights | Operations Advisory Enquiries">
-  <meta property="og:description" content="Choose a client, recruiter or peer enquiry route for Phull Insights. No operational data is needed for the first conversation.">
+  <meta property="og:title" content="Contact Pupsi Phull | Phull Insights">
+  <meta property="og:description" content="Send Pupsi Phull a client, recruiter or peer enquiry through the Phull Insights contact form.">
   <meta property="og:url" content="https://phullinsights.com/contact/">
   <meta property="og:image" content="https://phullinsights.com/social/home.png">
   <meta property="og:image:alt" content="Phull Insights: turning operational complexity into measurable performance.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Contact Phull Insights | Operations Advisory Enquiries">
-  <meta name="twitter:description" content="Choose a client, recruiter or peer enquiry route for Phull Insights. No operational data is needed for the first conversation.">
+  <meta name="twitter:title" content="Contact Pupsi Phull | Phull Insights">
+  <meta name="twitter:description" content="Send Pupsi Phull a client, recruiter or peer enquiry through the Phull Insights contact form.">
   <meta name="twitter:image" content="https://phullinsights.com/social/home.png">
   <meta name="twitter:image:alt" content="Phull Insights: turning operational complexity into measurable performance.">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -52,7 +52,32 @@
   <a href="/about/">About</a>
   <a class="nav-cta" href="/contact/">Contact</a></div></nav>
   </header>
-  <main id="main"><nav class="breadcrumbs container" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Contact</span></nav><section class="page-hero section-border"><div class="container"><p class="eyebrow">Contact · Route-specific enquiries</p><h1>Start with the reason for the conversation.</h1><p class="hero-sub">Choose the route that fits. All three routes reach Pupsi at hello@phullinsights.com and remain distinguishable for the next analytics update.</p></div></section><section class="content-section section-border"><div class="container contact-layout"><div class="contact-route-list"><article data-route="client"><p class="card-tag">Client</p><h2>Request a 30-minute Operational Diagnostic</h2><p>Share the operating symptom and the decision that is difficult to make. No operational files are needed.</p></article><article data-route="recruiter"><p class="card-tag">Recruiter</p><h2>Discuss an executive mandate</h2><p>Share the level, scope, sector and success profile for a confidential fit conversation.</p></article><article data-route="peer"><p class="card-tag">Peer</p><h2>Exchange methods or commentary</h2><p>Share a method, speaking topic or operating question worth exploring.</p></article></div><div class="form-panel"><h2>Choose an email route</h2><p>Until the hosted form is selected, each route opens an email addressed to Pupsi. No response-time promise is made.</p><div class="email-route-list"><a class="btn btn-primary" data-event="client_contact" href="mailto:hello@phullinsights.com?subject=Client%20operational%20diagnostic%20enquiry">Client enquiry <span aria-hidden="true">→</span></a><a class="btn btn-ghost" data-event="recruiter_contact" href="mailto:hello@phullinsights.com?subject=Executive%20mandate%20discussion">Recruiter enquiry <span aria-hidden="true">→</span></a><a class="btn btn-ghost" data-event="peer_contact" href="mailto:hello@phullinsights.com?subject=Peer%20or%20speaking%20enquiry">Peer or speaking enquiry <span aria-hidden="true">→</span></a></div><p class="form-warning">Do not send patient data, special-category personal data, confidential files or operational extracts.</p></div></div></section></main>
+  <main id="main"><nav class="breadcrumbs container" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Contact</span></nav><section class="page-hero section-border"><div class="container"><p class="eyebrow">Contact Phull Insights</p><h1>Send a message.</h1><p class="hero-sub">Use one form for client, recruiter or peer enquiries. No operational files or sensitive information are needed for the first conversation.</p></div></section><section class="content-section section-border"><div class="container contact-simple">
+    <div class="form-panel contact-form-panel">
+      <div class="form-intro"><p class="eyebrow">Email form</p><h2>What would you like to discuss?</h2><p>Your message will be routed to <a href="mailto:hello@phullinsights.com">hello@phullinsights.com</a> through Web3Forms.</p></div>
+      <form id="preview-contact-form" action="https://api.web3forms.com/submit" method="post" data-provider="web3forms">
+        <input type="hidden" name="access_key" value="f78ce2dc-39f3-41f3-ba6e-8d702a378022">
+        <input type="hidden" name="subject" value="New enquiry: phullinsights.com">
+        <input type="checkbox" name="botcheck" class="honeypot-control" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <fieldset>
+          <legend class="sr-only">Contact details and message</legend>
+          <div class="form-field-row">
+            <div><label for="name">Name</label><input id="name" name="name" autocomplete="name" required></div>
+            <div><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+          </div>
+          <label for="route">Reason for getting in touch</label>
+          <select id="route" name="route" required><option value="">Choose one</option><option value="client">Client enquiry</option><option value="recruiter">Recruiter or executive mandate</option><option value="peer">Peer, speaking or commentary</option></select>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="7" required></textarea>
+          <label class="consent-check"><input type="checkbox" name="privacy_acknowledgement" required> <span>I understand this information will be used to respond to my enquiry.</span></label>
+          <p class="form-warning">Do not include patient data, special-category personal data, confidential files, credentials or operational extracts.</p>
+          <button class="btn btn-primary" type="submit">Send message</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </fieldset>
+      </form>
+      <p class="form-provider-note">This form uses Web3Forms for delivery. Do not include sensitive information or operational files.</p>
+    </div>
+  </div></section></main>
   <footer class="site-footer">
     <div class="container footer-grid">
       <div><a class="wordmark footer-wordmark" href="/"><span>Phull</span><em>Insights</em></a><p><strong>Full insight. Real depth.</strong></p><p>Operations. Supply Chain. Transformation. Sustainable Performance.</p></div>

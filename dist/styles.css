@@ -237,6 +237,16 @@ p, li { font-size: 1rem; }
 .contact-route-list article { padding: 1.4rem 0; border-bottom: 1px solid var(--border); }
 .contact-route-list h2 { font-size: 1.65rem; }
 .form-panel { padding: 2rem; background: var(--surface); box-shadow: var(--shadow); }
+.contact-simple { max-width: 900px; }
+.contact-form-panel { padding: clamp(1.5rem,4vw,3.25rem); }
+.form-intro { max-width: 680px; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+.form-intro h2 { margin-bottom: .75rem; }
+.form-intro p:last-child { color: var(--muted); }
+.form-field-row { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.25rem; }
+.form-field-row > div { display: grid; gap: .65rem; }
+.form-provider-note { margin: 1.5rem 0 0; padding-top: 1.25rem; border-top: 1px solid var(--border); color: var(--muted); font-size: .82rem; }
+.honeypot-control { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 fieldset { display: grid; gap: .65rem; margin: 0; padding: 0; border: 0; }
 legend { margin-bottom: 1rem; font: 700 1.8rem "Playfair Display", serif; }
 label { margin-top: .6rem; font-weight: 650; }
@@ -302,6 +312,7 @@ input:focus, select:focus, textarea:focus { outline: 3px solid color-mix(in srgb
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; }
   .btn { width: 100%; }
+  .form-field-row { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -341,6 +352,38 @@ input:focus, select:focus, textarea:focus { outline: 3px solid color-mix(in srgb
 .sector-list { display:flex; flex-wrap:wrap; gap:0; border-top:1px solid var(--border); }
 .sector-list span { padding:.8rem 1rem .8rem 0; margin-right:1rem; border-bottom:1px solid var(--border); color:var(--text); }
 .editorial-aside { border-top:3px solid var(--brass); padding-top:1.3rem; }
+.mandate-band { padding-block:3rem; background:var(--raised); }
+.mandate-list { margin:2rem 0 0; border-top:1px solid var(--border); }
+.mandate-list div { display:grid; grid-template-columns:minmax(120px,.28fr) minmax(0,1fr); gap:2rem; padding:1rem 0; border-bottom:1px solid var(--border); }
+.mandate-list dt { color:var(--brass); font:600 .78rem "DM Mono",monospace; text-transform:uppercase; letter-spacing:.06em; }
+.mandate-list dd { margin:0; color:var(--text); }
+.scope-section h2 { max-width:760px; }
+.scope-ledger { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; margin-top:2.5rem; padding:1px; background:var(--border); }
+.scope-ledger article { min-height:260px; padding:2rem; background:var(--surface); }
+.scope-ledger article:last-child { grid-column:1 / -1; min-height:auto; display:grid; grid-template-columns:160px .45fr 1fr; gap:2rem; align-items:baseline; }
+.scope-ledger strong { color:var(--brass); font:700 clamp(2.4rem,5vw,4.4rem)/1 "Playfair Display",Georgia,serif; }
+.scope-ledger h3 { margin:.9rem 0 .6rem; font-size:1.45rem; }
+.scope-ledger p { margin:0; color:var(--muted); }
+.outcome-ledger { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); margin-top:2.5rem; border-top:1px solid var(--border); }
+.outcome-ledger article { display:grid; grid-template-columns:minmax(120px,.42fr) 1fr; gap:1.5rem; padding:1.4rem 0; border-bottom:1px solid var(--border); }
+.outcome-ledger article:nth-child(odd) { padding-right:2rem; }
+.outcome-ledger article:nth-child(even) { padding-left:2rem; border-left:1px solid var(--border); }
+.outcome-ledger strong { color:var(--brass); font:700 1.3rem/1.2 "Playfair Display",Georgia,serif; }
+.outcome-ledger h3 { margin:0 0 .35rem; font-size:1.05rem; }
+.outcome-ledger p { margin:0; color:var(--muted); font-size:.92rem; }
+.career-section { background:var(--raised); }
+.career-section h2 { max-width:850px; }
+.career-timeline { margin:2.5rem 0 0; padding:0; list-style:none; border-top:1px solid var(--border); }
+.career-timeline li { display:grid; grid-template-columns:minmax(170px,.32fr) 1fr; gap:2rem; padding:1.35rem 0; border-bottom:1px solid var(--border); }
+.career-timeline time { color:var(--muted); font:500 .78rem/1.5 "DM Mono",monospace; text-transform:uppercase; }
+.career-timeline h3 { margin:0 0 .3rem; font-size:1.15rem; }
+.career-timeline p { margin:0; color:var(--muted); }
+.recruiter-capabilities { align-items:start; }
+.leadership-approach { padding-block:5rem; color:var(--inverse); background:var(--navy); }
+.leadership-approach h2 { color:var(--inverse); }
+.leadership-approach .eyebrow { color:var(--brass-light); }
+.leadership-statement { margin:0; color:#d5dddf; font:700 clamp(1.35rem,2.3vw,2rem)/1.45 "Playfair Display",Georgia,serif; }
+.secondary-link { display:block; margin-top:1.25rem; }
 .layers-visual { min-height:320px; position:relative; display:grid; place-items:center; }
 .layers-visual i { position:absolute; border:1px solid var(--brass); border-radius:50%; }
 .layers-visual i:nth-child(1){width:80%;height:80%;opacity:.25}.layers-visual i:nth-child(2){width:60%;height:60%;opacity:.45}.layers-visual i:nth-child(3){width:40%;height:40%;opacity:.7}.layers-visual i:nth-child(4){width:20%;height:20%;background:var(--brass)}
@@ -352,8 +395,8 @@ input:focus, select:focus, textarea:focus { outline: 3px solid color-mix(in srgb
 .signal-decision>div{display:grid;gap:.6rem}.signal-decision>div span{padding:.7rem 1rem;border:1px solid #5f7984;border-radius:999px}.signal-decision>i{padding:2rem 1rem;border:2px solid var(--brass);border-radius:50%;font-style:normal}.signal-decision>strong{padding:2rem;border:1px solid #5f7984;font:700 1.5rem "Playfair Display",serif}.signal-decision small{display:block;margin-top:1rem;color:#b8c6ca;font:400 .72rem "DM Mono",monospace}
 .visual-disclaimer { margin-top:1.5rem;color:#b8c6ca;font-size:.82rem; }
 .risk-line { display:flex; align-items:center; justify-content:space-between; gap:1rem; position:relative; min-height:180px; }.risk-line:before{content:"";position:absolute;left:5%;right:5%;height:1px;background:var(--border)}.risk-line span,.risk-line i{position:relative;z-index:1;padding:.7rem;background:var(--raised);font-style:normal}.risk-line i{border:1px solid var(--brass);color:var(--brass)}
-@media(max-width:900px){.refined-hero,.editorial-split,.journey-hero-grid{grid-template-columns:1fr}.orbital-visual{width:280px}.signal-decision{grid-template-columns:1fr}.metric-ledger{grid-template-columns:1fr}.metric-ledger div:nth-child(even){padding-left:0;border-left:0}}
-@media(max-width:680px){.service-editorial-grid,.pillar-diagram{grid-template-columns:1fr}.service-editorial-grid article,.service-editorial-grid article:nth-child(odd),.service-editorial-grid article:nth-child(even){padding:1.6rem 0;border-right:0}.pillar-diagram span{border-right:0;border-bottom:1px solid var(--border)}.depth-progress{min-height:210px;padding:1rem}.journey-simple{grid-template-columns:1fr}.risk-line{flex-direction:column;align-items:stretch}.risk-line:before{left:50%;top:10%;bottom:10%;right:auto;width:1px;height:auto}.metric-ledger div{flex-direction:column;gap:.3rem}.metric-ledger span{text-align:left}}
+@media(max-width:900px){.refined-hero,.editorial-split,.journey-hero-grid{grid-template-columns:1fr}.orbital-visual{width:280px}.signal-decision{grid-template-columns:1fr}.metric-ledger,.outcome-ledger{grid-template-columns:1fr}.metric-ledger div:nth-child(even),.outcome-ledger article:nth-child(even){padding-left:0;border-left:0}.outcome-ledger article:nth-child(odd){padding-right:0}}
+@media(max-width:680px){.service-editorial-grid,.pillar-diagram,.scope-ledger{grid-template-columns:1fr}.service-editorial-grid article,.service-editorial-grid article:nth-child(odd),.service-editorial-grid article:nth-child(even){padding:1.6rem 0;border-right:0}.pillar-diagram span{border-right:0;border-bottom:1px solid var(--border)}.depth-progress{min-height:210px;padding:1rem}.journey-simple{grid-template-columns:1fr}.risk-line{flex-direction:column;align-items:stretch}.risk-line:before{left:50%;top:10%;bottom:10%;right:auto;width:1px;height:auto}.metric-ledger div{flex-direction:column;gap:.3rem}.metric-ledger span{text-align:left}.mandate-list div,.career-timeline li,.outcome-ledger article{grid-template-columns:1fr;gap:.5rem}.scope-ledger article:last-child{grid-column:auto;display:block;min-height:260px}.scope-ledger article:last-child h3{margin-top:.9rem}}
 
 /* Three Routes card language
    The uploaded Three Routes composition is the reference for surface,

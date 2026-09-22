@@ -21,10 +21,37 @@ document.querySelectorAll('.theme-toggle').forEach((button) => {
 
 const previewForm = document.querySelector('#preview-contact-form');
 if (previewForm) {
-  previewForm.addEventListener('submit', (event) => {
+  previewForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const status = document.querySelector('#form-status');
-    if (status) status.textContent = 'Preview only: no information was sent. Form delivery will be enabled only after provider and privacy approval.';
+    const submitButton = previewForm.querySelector('button[type="submit"]');
+    const accessKey = previewForm.querySelector('[name="access_key"]')?.value;
+
+    if (!accessKey || accessKey === 'YOUR_ACCESS_KEY') {
+      if (status) status.textContent = 'This form is not configured yet. Please email hello@phullinsights.com instead.';
+      return;
+    }
+
+    if (status) status.textContent = 'Sending…';
+    if (submitButton) submitButton.disabled = true;
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(previewForm),
+      });
+      const data = await response.json();
+      if (response.ok && data.success) {
+        if (status) status.textContent = "Thanks — I'll be in touch shortly.";
+        previewForm.reset();
+      } else if (status) {
+        status.textContent = 'Something went wrong. Please email instead.';
+      }
+    } catch (error) {
+      if (status) status.textContent = 'Something went wrong. Please email instead.';
+    } finally {
+      if (submitButton) submitButton.disabled = false;
+    }
   });
 }
 

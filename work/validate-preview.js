@@ -80,6 +80,19 @@ for (const discipline of ['Operations', 'Supply Chain', 'Transformation', 'Susta
 if (!titles.has('JourneyIQ Operational Diagnostic Concept | Phull Insights')) errors.push('JourneyIQ page title missing');
 if (!allHtml.includes('Postgraduate Certificate in Sustainability, Cranfield University, 2026')) errors.push('Exact Cranfield qualification wording missing');
 if (!allHtml.includes('£230m revenue scope') || !allHtml.includes('£100m P&amp;L accountability')) errors.push('Separate scope proof points missing');
+const recruiterHtml = fs.readFileSync(htmlPath('/recruiter/'), 'utf8');
+if (!recruiterHtml.includes('£100m') || !recruiterHtml.includes('P&amp;L accountability') || !recruiterHtml.includes('16-branch RS Local network')) errors.push('Recruiter £100m P&L context missing');
+if (!recruiterHtml.includes('£230m') || !recruiterHtml.includes('Revenue scope') || !recruiterHtml.includes('four technical service lines')) errors.push('Recruiter £230m revenue context missing');
+if (recruiterHtml.includes('£330m')) errors.push('Recruiter page incorrectly combines £100m and £230m scopes');
+if (!recruiterHtml.includes('Head of Supply Chain Operations') || !recruiterHtml.includes('COO · Operations Director')) errors.push('Recruiter current remit or target mandate content missing');
+if (recruiterHtml.includes('76 → 60 days') || recruiterHtml.includes('60% → 92%')) errors.push('Recruiter page contains outcomes absent from the supplied Executive Profile');
+const contactHtml = fs.readFileSync(htmlPath('/contact/'), 'utf8');
+if (!contactHtml.includes('id="preview-contact-form"') || !contactHtml.includes('data-provider="web3forms"')) errors.push('Single Web3Forms contact form missing');
+if (!contactHtml.includes('action="https://api.web3forms.com/submit"')) errors.push('Web3Forms endpoint missing');
+for (const field of ['access_key', 'subject', 'botcheck', 'name', 'email', 'route', 'message']) {
+  if (!contactHtml.includes(`name="${field}"`)) errors.push(`Required contact form field missing: ${field}`);
+}
+if (contactHtml.includes('name="access_key" value="YOUR_ACCESS_KEY"')) errors.push('Web3Forms access key is not configured');
 if (fs.existsSync(path.join(dist, 'sitemap.xml'))) errors.push('Preview must not include sitemap.xml');
 for (const image of ['home.png', 'services.png', 'insights.png']) if (!fs.existsSync(path.join(dist, 'social', image))) errors.push(`Social preview image missing: ${image}`);
 const robotsTxt = fs.readFileSync(path.join(dist, 'robots.txt'), 'utf8');

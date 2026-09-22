@@ -40,13 +40,13 @@ Every push to main publishes the validated, committed dist/ folder through
 the GitHub Pages workflow. The custom domain is phullinsights.com.
 
 The production output is plain HTML, CSS and JavaScript. The Contact page
-uses separate Client, Recruiter and Peer email routes until a hosted-form and
-spam-protection provider are selected. Analytics remains disabled until a
-platform and consent implementation are approved.
+uses Web3Forms to deliver Client, Recruiter and Peer enquiries through a
+single form. Analytics remains disabled until a platform and consent
+implementation are approved.
 
 ## Deferred to the next update
 
 - Replace the postal-address placeholder in the privacy notice.
-- Select the hosted-form and spam-protection providers.
+- Complete the Web3Forms privacy, domain-restriction and delivery checks.
 - Decide whether to introduce an analytics platform.
 - Set the timing and decision path for the JourneyIQ naming review.

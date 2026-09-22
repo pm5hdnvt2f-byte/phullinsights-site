@@ -13,7 +13,7 @@
 - [x] Anonymised cases contain no company names and no unverified outcome metrics.
 - [x] JourneyIQ is retained temporarily and marked for next-version review.
 - [x] The rich form specification routes Client, Recruiter and Peer separately to one planned recipient.
-- [x] Form submission is disabled so the preview does not collect or transmit personal information.
+- [x] Web3Forms is connected in the test preview using the supplied client-side access key.
 - [x] Owner approval for the revised visible copy and audience journeys is recorded (21 September 2026).
 - [x] Punjabi meaning/transliteration is retained per owner instruction.
 - [x] LinkedIn recommendations are referenced through the public profile instead of copied.
@@ -27,9 +27,11 @@
 
 ## Required approvals before production
 
+- [x] Owner signs off the expanded Recruiter route, each Executive Profile metric and the current-role wording by authorising publication (22 September 2026).
 - [ ] Replace the postal-address placeholder before production.
 - [ ] Legal/privacy reviewer confirms controller wording, lawful bases, rights wording and the proposed retention schedule.
-- [ ] Hosted-form, spam-protection, email and analytics providers are selected; their data locations, processors and transfer safeguards are documented.
+- [ ] Web3Forms data location, processor terms and transfer safeguards are documented in the final privacy notice; email and analytics providers are confirmed separately.
+- [ ] Restrict the Web3Forms access key to the production domain, retain the bot check and confirm the destination is `hello@phullinsights.com`.
 - [ ] Form acknowledgement and delivery of all three routes to `hello@phullinsights.com` pass an end-to-end test.
 - [ ] Cookie consent prevents non-essential tracking before consent; Accept, Reject and Manage are equally available; withdrawal works.
 - [ ] Client, Recruiter and Peer events pass controlled tests without double counting.
