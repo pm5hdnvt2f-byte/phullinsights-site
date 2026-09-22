@@ -247,4 +247,6 @@ fs.writeFileSync(path.join(out, 'robots.txt'), 'User-agent: *\nDisallow: /\n');
 fs.writeFileSync(path.join(out, 'routes.json'), JSON.stringify(routes, null, 2));
 fs.writeFileSync(path.join(out, '404.html'), layout({ route: '/404/', title: 'Page Not Found | Phull Insights', description: 'The requested Phull Insights preview page could not be found.', eyebrow: '404', h1: 'That page is not part of this preview.', lead: 'Use one of the three audience routes or return to the homepage.', body: `<section class="content-section"><div class="container narrow"><div class="link-grid"><a href="/client/">Client →</a><a href="/recruiter/">Recruiter →</a><a href="/peer/">Peer →</a></div></div></section>` }));
 
-console.log(`Generated ${routes.length} preview routes with noindex metadata.`);
+const { buildArticles } = require('./build-articles');
+const totalRoutes = buildArticles({ layout, write, out, caseTopics: insightTopics, primaryCta });
+console.log(`Generated ${totalRoutes} ${isPreview ? 'preview' : 'production-source'} routes, including 16 articles.`);
