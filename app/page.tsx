@@ -83,11 +83,17 @@ export default function Home() {
             emails, exceptions, and handoffs a network produces every day,
             and builds the case for change from there.
           </p>
-          <dl className="mt-10 grid gap-8 sm:grid-cols-3">
+          <dl className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             <div>
-              <dt className="font-serif text-3xl text-ink">£330m+</dt>
+              <dt className="font-serif text-3xl text-ink">£100m</dt>
               <dd className="mt-1 text-sm text-slate">
-                combined P&amp;L and revenue scope led across operations roles
+                P&amp;L accountability, 16-branch RS Local network
+              </dd>
+            </div>
+            <div>
+              <dt className="font-serif text-3xl text-ink">£230m</dt>
+              <dd className="mt-1 text-sm text-slate">
+                separate revenue scope, Value Added Solutions
               </dd>
             </div>
             <div>

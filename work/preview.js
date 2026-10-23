@@ -65,3 +65,59 @@ document.querySelectorAll('[data-event]').forEach((element) => {
     window.phullAnalytics.track(element.dataset.event);
   });
 });
+
+// Scroll reveal and animated evidence counters (used on the About page impact grid).
+const revealTargets = document.querySelectorAll('[data-reveal]');
+if (revealTargets.length) {
+  let reducedMotion = false;
+  try { reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (error) {}
+
+  const animateCount = (span) => {
+    const from = parseFloat(span.dataset.from);
+    const to = parseFloat(span.dataset.to);
+    const decimals = parseInt(span.dataset.decimals || '0', 10);
+    const finalText = span.dataset.toText || (Number.isNaN(to) ? span.textContent : to.toFixed(decimals));
+    if (reducedMotion || Number.isNaN(from) || Number.isNaN(to)) {
+      span.textContent = finalText;
+      return;
+    }
+    const duration = 900;
+    let start = null;
+    const step = (timestamp) => {
+      if (start === null) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      if (progress >= 1) {
+        span.textContent = finalText;
+        return;
+      }
+      const eased = 1 - Math.pow(1 - progress, 3);
+      span.textContent = (from + (to - from) * eased).toFixed(decimals);
+      requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+
+  const reveal = (element) => {
+    if (element.classList.contains('is-visible')) return;
+    element.classList.add('is-visible');
+    element.querySelectorAll('.count-num').forEach(animateCount);
+  };
+
+  let observer;
+  try {
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          reveal(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.25 });
+    revealTargets.forEach((element) => observer.observe(element));
+  } catch (error) {
+    revealTargets.forEach(reveal);
+  }
+
+  // Safety net: nothing stays hidden if the observer never fires.
+  setTimeout(() => revealTargets.forEach(reveal), 4000);
+}
