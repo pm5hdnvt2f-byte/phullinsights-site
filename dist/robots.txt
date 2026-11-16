@@ -1,3 +1,2 @@
 User-agent: *
-Allow: /
-Sitemap: https://phullinsights.com/sitemap.xml
+Disallow: /
